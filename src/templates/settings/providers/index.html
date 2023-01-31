@@ -1,0 +1,65 @@
+{% extends 'social-share/_layouts' %}
+
+{% requireAdmin %}
+
+{% do view.registerAssetBundle('craft\\web\\assets\\admintable\\AdminTableAsset') -%}
+
+{% set crumbs = [
+    { label: craft.socialShare.getPluginName() | t('social-share'), url: url('social-share/settings') },
+    { label: 'Providers' | t('social-share'), url: url('social-share/settings/providers') }
+] %}
+
+{% block blockContent %}
+
+<div id="providers-vue-admin-table"></div>
+
+{% endblock %}
+
+{% set tableData = [] %}
+
+{% for provider in providers %}
+    {% set tableData = tableData | merge([{
+        id: provider.handle,
+        name: { name: provider.name | t('site') | e, icon: provider.icon, color: provider.primaryColor, url: provider.hasSettings ? url('social-share/settings/providers/edit/' ~ provider.handle) },
+        handle: provider.handle,
+        configured: { hasSettings: provider.hasSettings, isConfigured: provider.isConfigured },
+    }]) %}
+{% endfor %}
+
+{% js %}
+    var columns = [
+        { name: 'name', title: Craft.t('app', 'Name'), callback: function(provider) {
+            let $label = '';
+
+            if (provider.url) {
+                $label = '<a href="' + provider.url + '">' + provider.name + '</a>';
+            } else {
+                $label = provider.name;
+            }
+
+            return '<div class="ss-provider" style="--bg-color: ' + provider.color + '">' +
+                '<span class="ss-provider-icon">' + provider.icon + '</span>' +
+                '<span class="ss-provider-label cell-bold">' + $label + '</span>' +
+            '</div>';
+        } },
+        { name: '__slot:handle', title: Craft.t('app', 'Handle') },
+        { name: 'configured', title: Craft.t('app', 'Status'), callback: function(provider) {
+            if (provider.hasSettings) {
+                if (provider.isConfigured) {
+                    return '<span class="status on"></span>' + Craft.t('social-share', 'Configured');
+                } else {
+                    return '<span class="status"></span>' + Craft.t('social-share', 'Not configured');
+                }
+            } else {
+                return '-';
+            }
+        } },
+    ];
+
+    new Craft.VueAdminTable({
+        columns: columns,
+        container: '#providers-vue-admin-table',
+        emptyMessage: Craft.t('social-share', 'No providers exist yet.'),
+        tableData: {{ tableData | json_encode | raw }},
+    });
+{% endjs %}

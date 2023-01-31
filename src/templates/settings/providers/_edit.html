@@ -1,0 +1,116 @@
+{% extends 'social-share/_layouts' %}
+{% import '_includes/forms' as forms %}
+
+{% requireAdmin %}
+
+{% set crumbs = [
+    { label: craft.socialShare.getPluginName() | t('social-share'), url: url('social-share/settings') },
+    { label: 'Providers' | t('social-share'), url: url('social-share/settings/providers') }
+] %}
+
+{% set fullPageForm = craft.app.config.general.allowAdminChanges %}
+{% set title = provider.name %}
+
+{% set saveShortcutRedirect = 'social-share/settings/providers/edit/' ~ provider.handle %}
+
+{% block actionButton %}
+
+{% if craft.app.config.general.allowAdminChanges %}
+    <div class="btngroup">
+        <input type="submit" class="btn submit" value="{{ 'Save' | t('app') }}">
+
+        <div class="btn submit menubtn"></div>
+        <div class="menu">
+            <ul>
+                <li>
+                    <a class="formsubmit" data-redirect="{{ saveShortcutRedirect | hash }}">
+                        {{ forms.optionShortcutLabel('S') }}
+                        {{ 'Save and continue editing' | t('app') }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
+
+
+{% block blockContent %}
+
+<input type="hidden" name="action" value="social-share/providers/save">
+<input type="hidden" name="handle" value="{{ provider.handle }}">
+{{ redirectInput('social-share/settings/providers') }}
+
+{% if not craft.app.config.general.allowAdminChanges %}
+    <p class="warning with-icon" style="margin-top: -5px;">
+        {{ 'Provider settings can only be editable on an environment with `allowAdminChanges` enabled.' | t('social-share') | md(inlineOnly=true) }}
+    </p>
+{% endif %}
+
+{% namespace 'settings' %}
+    {{ provider.getSettingsHtml() | raw }}
+{% endnamespace %}
+
+{% endblock %}
+
+{% block details %}
+
+{% if isOAuth %}
+    <div class="meta">
+        <div class="field lightswitch-field">
+            {% if provider.isConfigured %}
+                <div class="heading">
+                    <span class="status on"></span>{{ 'Provider Configured' | t('social-share') }}
+                </div>
+            {% else %}
+                <div class="heading">
+                    <span class="status"></span><span class="light">{{ 'Provider not configured' | t('social-share') }}</span>
+                </div>
+            {% endif %}
+        </div>
+
+        {% if provider.isConnected %}
+            <div class="field lightswitch-field ss-connect">
+                <div class="heading">
+                    <span class="status on"></span>{{ 'Connected' | t('social-share') }}
+                </div>
+
+                <div class="input ltr">
+                    <a class="btn small formsubmit" data-action="social-share/auth/disconnect" data-param="provider" data-value="{{ provider.handle }}" data-redirect="{{ saveShortcutRedirect | hash }}">{{ 'Disconnect' | t('social-share') }}</a>
+                </div>
+            </div>
+        {% else %}
+            <div class="field lightswitch-field ss-connect">
+                <div class="heading">
+                    <span class="status"></span><span class="light">{{ 'Not Connected' | t('social-share') }}</span>
+                </div>
+
+                <div class="input ltr">
+                    <a class="btn small formsubmit" data-action="social-share/auth/connect" data-param="provider" data-value="{{ provider.handle }}" data-redirect="{{ 'social-share/providers/' ~ provider.handle | hash }}">{{ 'Connect' | t('social-share') }}</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}
+
+{% js %}
+
+// Add event listeners to all form inputs, to detect a change. Show a message to save when changed.
+$(document).ready(function() {
+    var html = '<div class="heading"><span class="warning with-icon">{{ 'Save this account to connect.' | t('social-share') }}</span></div>';
+    
+    $('#main-form').find('input, select, textarea').on('input', function() {
+        $('.ss-connect').html(html);
+    });
+
+    $('#main-form').find('.lightswitch').on('change', function() {
+        $('.ss-connect').html(html);
+    });
+});
+
+$('#main-form input').trigger('input');
+
+{% endjs %}
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% import '_includes/forms' as forms %}
+{% import 'verbb-base/_macros' as macros %}
+
+{{ forms.textField({
+    readonly: true,
+    label: 'Redirect URI' | t('social-share'),
+    instructions: 'Use this URI when setting up your {provider} app.' | t('social-share', { provider: provider.name }),
+    value: provider.getRedirectUri(),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Client ID' | t('social-share'),
+    instructions: 'Enter your {provider} Client ID key here.' | t('social-share', { provider: provider.name }),
+    name: 'clientId',
+    required: true,
+    suggestEnvVars: true,
+    value: provider.clientId ?? '',
+    warning: macros.configWarning("providers.#{provider.handle}.clientId", 'social-share'),
+    errors: provider.getErrors('clientId'),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Client Secret' | t('social-share'),
+    instructions: 'Enter your {provider} Client Secret here.' | t('social-share', { provider: provider.name }),
+    name: 'clientSecret',
+    required: true,
+    suggestEnvVars: true,
+    value: provider.clientSecret ?? '',
+    warning: macros.configWarning("providers.#{provider.handle}.clientSecret", 'social-share'),
+    errors: provider.getErrors('clientSecret'),
+}) }}

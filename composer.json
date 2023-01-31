@@ -1,0 +1,43 @@
+{
+    "name": "verbb/social-share",
+    "description": "Generate social media buttons, share dialogs and share counts.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin"
+    ],
+    "support": {
+        "email": "support@verbb.io",
+        "issues": "https://github.com/verbb/social-share/issues?state=open",
+        "source": "https://github.com/verbb/social-share",
+        "docs": "https://github.com/verbb/social-share",
+        "rss": "https://github.com/verbb/social-share/commits/v2.atom"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Verbb",
+            "homepage": "https://verbb.io"
+        }
+    ],
+    "require": {
+        "php": "^8.0.2",
+        "craftcms/cms": "^4.0.0",
+        "verbb/auth": "^1.0.0",
+        "verbb/base": "^2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "verbb\\socialshare\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Social Share",
+        "handle": "social-share",
+        "changelogUrl": "https://raw.githubusercontent.com/verbb/social-share/craft-4/CHANGELOG.md",
+        "class": "verbb\\socialshare\\SocialShare"
+    }
+}

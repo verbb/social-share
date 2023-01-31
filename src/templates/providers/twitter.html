@@ -1,0 +1,25 @@
+{% import '_includes/forms' as forms %}
+{% import 'verbb-base/_macros' as macros %}
+
+{{ forms.autosuggestField({
+    first: true,
+    label: 'Client ID' | t('social-share'),
+    instructions: 'Enter your {name} Client ID key here.' | t('social-share', { name: provider.displayName() }),
+    name: 'clientId',
+    required: true,
+    suggestEnvVars: true,
+    value: provider.clientId ?? '',
+    warning: macros.configWarning('clientId', 'social-share'),
+    errors: provider.getErrors('clientId'),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Client Secret' | t('social-share'),
+    instructions: 'Enter your {name} Client Secret here.' | t('social-share', { name: provider.displayName() }),
+    name: 'clientSecret',
+    required: true,
+    suggestEnvVars: true,
+    value: provider.clientSecret ?? '',
+    warning: macros.configWarning('clientSecret', 'social-share'),
+    errors: provider.getErrors('clientSecret'),
+}) }}

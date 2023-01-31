@@ -1,0 +1,14 @@
+{% set instructions %}
+### Connect to the {name} API
+1. Go to <a href="https://dribbble.com/account/applications/new" target="_blank">{name}</a> and login to your account.
+1. Fill in the form details.
+1. In the **Callback URL** field, enter the value from the **Redirect URI** field below.
+1. Copy the **Client ID** from {name} and paste in the **Client ID** field below.
+1. Copy the **Client Secret** from {name} and paste in the **Client Secret** field below.
+{% endset %}
+
+<div class="ss-settings-block">
+    {{ instructions | t('social-share', { name: provider.name, plugin: craft.socialShare.getPluginName() }) | md }}
+</div>
+
+{% include 'social-share/providers/_oauth' %}

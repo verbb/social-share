@@ -1,0 +1,97 @@
+// ==========================================================================
+
+// Social Share for Craft CMS
+// Author: Verbb - https://verbb.io/
+
+// ==========================================================================
+
+[data-social-button] {
+    display: inline-flex;
+    text-decoration: none;
+    font-family: inherit;
+    backface-visibility: hidden;
+    overflow: hidden;
+
+    --transition: all 0.2s ease;
+    --icon-size: 50%;
+    --size: 40px;
+    --gap: 5px;
+    --spacing: 10px;
+    --font-size: 14px;
+    --border-radius: 4px;
+    --border-radius-large: 20px;
+
+    background-color: var(--bg-color);
+    color: var(--icon-color);
+    transition: var(--transition);
+    height: var(--size);
+    line-height: var(--size);
+    font-size: var(--font-size);
+    margin: var(--gap);
+
+    &:hover {
+        background-color: var(--bg-hover-color);
+        color: var(--icon-hover-color);
+    }
+
+    &[data-shape="rectangle"] {
+        border-radius: 0;
+    }
+
+    &[data-shape="rounded"] {
+        border-radius: var(--border-radius);
+    }
+
+    &[data-show-label][data-shape="circle"] {
+        border-radius: var(--border-radius-large);
+    }
+
+    &[data-shape="circle"] {
+        border-radius: 50%;
+    }
+
+    [data-sb-content] {
+        display: inline-flex;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    [data-sb-icon-wrapper] {
+        display: none;
+        height: var(--size);
+        width: var(--size);
+        min-width: var(--size);
+    }
+
+    &[data-show-label] [data-sb-icon-wrapper] {
+        background: rgba(0, 0, 0, 0.08);
+    }
+
+    &[data-show-label][data-bg="black"] [data-sb-icon-wrapper] {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    &[data-show-icon] [data-sb-icon-wrapper] {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    [data-sb-icon-wrapper] > * {
+        height: var(--icon-size);
+        margin: 0 auto;
+    }
+
+    [data-sb-label-wrapper] {
+        display: none;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        margin: 0 var(--spacing);
+    }
+
+    &[data-show-label] [data-sb-label-wrapper] {
+        display: block;
+    }
+}
+
