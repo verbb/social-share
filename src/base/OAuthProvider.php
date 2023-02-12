@@ -49,7 +49,10 @@ abstract class OAuthProvider extends Provider implements OAuthProviderInterface
 
     public function getRedirectUri(): ?string
     {
-        return UrlHelper::siteUrl('social-share/auth/callback');
+        $siteId = Craft::$app->getSites()->getPrimarySite()->id;
+
+        // We should always use the primary site for the redirect
+        return UrlHelper::siteUrl('social-share/auth/callback', null, null, $siteId);
     }
 
     public function getToken(): ?Token
