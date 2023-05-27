@@ -1,4 +1,4 @@
-# Social Share Plugin for Craft CMS
+# Social Share plugin for Craft CMS
 <img width="500" src="https://verbb.imgix.net/plugins/social-share/social-share-social-card.png?v=1">
 
 Social Share is a toolkit for sharing and displaying social media information on your site. It can handle generating social media buttons, share dialogs and share counts.
@@ -21,5 +21,5 @@ Get in touch with us via the [Social Share Support page](https://verbb.io/craft-
 <h2></h2>
 
 <a href="https://verbb.io" target="_blank">
-  <img width="100" src="https://verbb.io/assets/img/verbb-pill.svg">
+    <img width="100" src="https://verbb.io/assets/img/verbb-pill.svg">
 </a>
