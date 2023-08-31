@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2 - 2023-08-31
+
+### Fixed
+- Fix an error when trying to use OAuth for some providers.
+
 ## 1.0.1 - 2023-05-27
 
 ### Fixed
