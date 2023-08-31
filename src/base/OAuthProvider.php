@@ -1,6 +1,7 @@
 <?php
 namespace verbb\socialshare\base;
 
+use Craft;
 use craft\helpers\UrlHelper;
 
 use verbb\auth\Auth;
