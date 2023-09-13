@@ -11,7 +11,7 @@ The following providers support fetching share counts:
 - Pinterest
 - Reddit
 - Tumblr
-- Twitter
+- X (Twitter)
 - Yummly
 
 ## Getting Share Count Providers

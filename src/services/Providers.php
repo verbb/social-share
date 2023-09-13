@@ -141,6 +141,7 @@ class Providers extends Component
             providerTypes\WhatsApp::class,
             providerTypes\Wikipedia::class,
             providerTypes\Wordpress::class,
+            providerTypes\X::class,
             providerTypes\Xing::class,
             providerTypes\Yammer::class,
             providerTypes\Yelp::class,

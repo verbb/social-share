@@ -18,9 +18,9 @@ The following providers support fetching follower counts:
 - SoundCloud
 - Spotify
 - Steam
-- Twitter
 - Vimeo
 - Vkontakte
+- X (Twitter)
 - YouTube Channel
 - YouTube User
 

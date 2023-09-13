@@ -49,11 +49,11 @@ The following providers support share buttons:
 - Threema
 - Trello
 - Tumblr
-- Twitter
 - Viber
 - Vkontakte
 - WhatsApp
 - Wordpress
+- X (Twitter)
 - Xing
 - Yammer
 - Yummly
