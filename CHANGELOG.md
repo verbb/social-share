@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3 - 2023-09-13
+
+### Added
+- Add X (Twitter).
+
 ## 1.0.2 - 2023-08-31
 
 ### Fixed
