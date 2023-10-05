@@ -7,7 +7,7 @@ The following providers support fetching share counts:
 
 - Buffer
 - Facebook
-- Linked.in
+- LinkedIn
 - Pinterest
 - Reddit
 - Tumblr
