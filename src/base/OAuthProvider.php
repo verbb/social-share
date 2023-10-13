@@ -30,14 +30,6 @@ abstract class OAuthProvider extends Provider implements OAuthProviderInterface
         return $attributes;
     }
 
-    public function defineRules(): array
-    {
-        $rules = parent::defineRules();
-        $rules[] = [['clientId', 'clientSecret'], 'required'];
-
-        return $rules;
-    }
-
     public function isConfigured(): bool
     {
         return $this->clientId && $this->clientSecret;
@@ -59,5 +51,17 @@ abstract class OAuthProvider extends Provider implements OAuthProviderInterface
     public function getToken(): ?Token
     {
         return Auth::$plugin->getTokens()->getTokenByOwnerReference('social-share', $this->handle);
+    }
+
+
+    // Protected Methods
+    // =========================================================================
+
+    protected function defineRules(): array
+    {
+        $rules = parent::defineRules();
+        $rules[] = [['clientId', 'clientSecret'], 'required'];
+
+        return $rules;
     }
 }

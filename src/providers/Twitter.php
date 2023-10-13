@@ -57,14 +57,6 @@ class Twitter extends Provider
         return App::parseEnv($this->clientSecret);
     }
 
-    public function defineRules(): array
-    {
-        $rules = parent::defineRules();
-        $rules[] = [['clientId', 'clientSecret'], 'required'];
-
-        return $rules;
-    }
-
     public function isConfigured(): bool
     {
         return $this->clientId && $this->clientSecret;
@@ -150,6 +142,18 @@ class Twitter extends Provider
         }
 
         return null;
+    }
+
+
+    // Protected Methods
+    // =========================================================================
+
+    protected function defineRules(): array
+    {
+        $rules = parent::defineRules();
+        $rules[] = [['clientId', 'clientSecret'], 'required'];
+
+        return $rules;
     }
 
 }

@@ -26,8 +26,8 @@ class SocialShare extends Plugin
     // Properties
     // =========================================================================
 
-    public string $schemaVersion = '1.0.0';
     public bool $hasCpSettings = true;
+    public string $schemaVersion = '1.0.0';
 
 
     // Traits
@@ -45,8 +45,6 @@ class SocialShare extends Plugin
 
         self::$plugin = $this;
 
-        $this->_registerComponents();
-        $this->_registerLogTarget();
         $this->_registerVariables();
         $this->_registerGraphQl();
 

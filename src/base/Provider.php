@@ -40,7 +40,7 @@ abstract class Provider extends SavableComponent implements ProviderInterface
 
     public static function log(Provider $provider, string $message, bool $throwError = false): void
     {
-        SocialShare::log($provider->name . ': ' . $message);
+        SocialShare::info($provider->name . ': ' . $message);
 
         if ($throwError) {
             throw new Exception($message);
