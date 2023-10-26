@@ -137,7 +137,7 @@ Here's an example of us doing just that!
     class: ['social-btn', button.handle],
     title: button.name,
     data: {
-        url: button.url,
+        url: button.providerUrl,
     },
     style: {
         color: button.primaryColor,
