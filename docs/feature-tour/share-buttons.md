@@ -130,7 +130,8 @@ Here's an example of us doing just that!
 ```twig
 {% set button = craft.socialShare.getShareButton('facebook') %}
 
-{{ tag('a', button.icon, {
+{{ tag('a', {
+    html: button.icon,
     href: 'javascript:void();',
     onclick: 'window.open(this.dataset.url, "ss_share_dialog", "width=626,height=436");',
     class: ['social-btn', button.handle],
