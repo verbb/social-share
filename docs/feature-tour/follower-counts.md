@@ -44,10 +44,10 @@ This should return the total number of followers for `craftcms` (e.g. `2K`).
 
 As each platform is different, you can use the guide below for what value the second parameter needs to be:
 
-- Facebook - Page ID, or Username (e.g. `xxxxxxxxx` or `craftcms`)
+- Facebook - Page ID, or Username (e.g. `craftcms`)
 - Pinterest - Username (e.g. `craftcms`)
 - YouTube User - Username (e.g. `@craftcms`)
-- YouTube Channel - Channel ID (e.g. `xxxxxxxxx`)
+- YouTube Channel - Channel ID (e.g. `Lofigirl-Chillbeats`)
 
 ### Render Options
 You can pass in a number of options to control output.
