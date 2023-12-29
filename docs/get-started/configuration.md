@@ -40,11 +40,16 @@ return [
 You can set provider settings by adding the `handle` of a provider, and passing in any setting specific to that provider.
 
 ```php
-'providers' => [
-    'facebook' => [
-        'appId' => 'xxxxxxxxxxxx',
-        'appSecret' => 'xxxxxxxxxxxx',
+return [
+    '*' => [
+        // ...
+        'providers' => [
+            'facebook' => [
+                'appId' => '••••••••••••••••••••••••••••',
+                'appSecret' => '••••••••••••••••••••••••••••',
+            ],
+        ],
     ],
-],
+];
 ```
 

@@ -29,7 +29,8 @@ Here's an example of us doing just that!
 ```twig
 {% set button = craft.socialShare.getButton('facebook') %}
 
-{{ tag('a', button.icon, {
+{{ tag('a', {
+    html: button.icon,
     href: '...',
     class: ['social-btn', button.handle],
     title: button.name,

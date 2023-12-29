@@ -2,9 +2,10 @@
 You can register your own Provider to add support for other social media platforms, or even extend an existing Provider.
 
 ```php
-use modules\MyProvider;
+namespace modules\sitemodule;
 
 use craft\events\RegisterComponentTypesEvent;
+use modules\sitemodule\MyProvider;
 use verbb\socialshare\services\Providers;
 use yii\base\Event;
 
@@ -18,7 +19,7 @@ Create the following class to house your Provider logic.
 
 ```php
 <?php
-namespace modules;
+namespace modules\sitemodule;
 
 class MyProvider extends Provider
 {
