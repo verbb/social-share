@@ -23,7 +23,8 @@ class Install extends Migration
     public function safeDown(): bool
     {
         // Delete all tokens for this plugin
-        Auth::$plugin->getTokens()->deleteTokensByOwner('social-share');
+        // Use `Auth::getInstance()` not `Auth::$plugin` as it doesn't seem to work well in migrations
+        Auth::getInstance()->getTokens()->deleteTokensByOwner('social-share');
 
         return true;
     }
