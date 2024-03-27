@@ -46,7 +46,7 @@ class AuthController extends Controller
             // Keep track of which provider instance is for, so we can fetch it in the callback
             Session::set('providerHandle', $providerHandle);
 
-            return Auth::$plugin->getOAuth()->connect('social-share', $provider);
+            return Auth::getInstance()->getOAuth()->connect('social-share', $provider);
         } catch (Throwable $e) {
             SocialShare::error('Unable to authorize connect “{provider}”: “{message}” {file}:{line}', [
                 'provider' => $providerHandle,
@@ -80,7 +80,7 @@ class AuthController extends Controller
 
         try {
             // Fetch the access token from the provider and create a Token for us to use
-            $token = Auth::$plugin->getOAuth()->callback('social-share', $provider);
+            $token = Auth::getInstance()->getOAuth()->callback('social-share', $provider);
 
             if (!$token) {
                 Session::setError('social-share', Craft::t('social-share', 'Unable to fetch token.'), true);
@@ -90,7 +90,7 @@ class AuthController extends Controller
 
             // Save the token to the Auth plugin, with a reference to this provider
             $token->reference = $provider->handle;
-            Auth::$plugin->getTokens()->upsertToken($token);
+            Auth::getInstance()->getTokens()->upsertToken($token);
         } catch (Throwable $e) {
             $error = Craft::t('social-share', 'Unable to process callback for “{provider}”: “{message}” {file}:{line}', [
                 'provider' => $providerHandle,
@@ -121,7 +121,7 @@ class AuthController extends Controller
         }
 
         // Delete all tokens for this provider
-        Auth::$plugin->getTokens()->deleteTokenByOwnerReference('social-share', $provider->handle);
+        Auth::getInstance()->getTokens()->deleteTokenByOwnerReference('social-share', $provider->handle);
 
         return $this->asModelSuccess($provider, Craft::t('social-share', '{provider} disconnected.', ['provider' => $provider->name]), 'provider');
     }

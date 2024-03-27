@@ -50,7 +50,7 @@ abstract class OAuthProvider extends Provider implements OAuthProviderInterface
 
     public function getToken(): ?Token
     {
-        return Auth::$plugin->getTokens()->getTokenByOwnerReference('social-share', $this->handle);
+        return Auth::getInstance()->getTokens()->getTokenByOwnerReference('social-share', $this->handle);
     }
 
 
