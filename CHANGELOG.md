@@ -6,6 +6,11 @@
 - Now requires PHP `8.2.0+`.
 - Now requires Craft `5.0.0-beta.1+`.
 
+## 1.0.4 - 2024-04-05
+
+### Added
+- Add improved session-handling for authorization and callback methods, to improve failed sessions in some cases.
+
 ## 1.0.3 - 2023-09-13
 
 ### Added
