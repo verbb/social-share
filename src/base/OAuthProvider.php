@@ -50,6 +50,11 @@ abstract class OAuthProvider extends Provider implements OAuthProviderInterface
 
     public function getRedirectUri(): ?string
     {
+        // Check for Headless Mode and use the Action URL, or when `cpTrigger` is empty to signify split front/back-end
+        if (Craft::$app->getConfig()->getGeneral()->headlessMode || !Craft::$app->getConfig()->getGeneral()->cpTrigger) {
+            return UrlHelper::actionUrl('social-share/auth/callback');
+        }
+        
         $siteId = Craft::$app->getSites()->getPrimarySite()->id;
 
         // We should always use the primary site for the redirect
