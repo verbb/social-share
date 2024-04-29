@@ -2,7 +2,7 @@
     "name": "verbb/social-share",
     "description": "Generate social media buttons, share dialogs and share counts.",
     "type": "craft-plugin",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "keywords": [
         "craft",
         "cms",
