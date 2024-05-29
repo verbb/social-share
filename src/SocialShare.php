@@ -99,6 +99,10 @@ class SocialShare extends Plugin
             $event->rules['social-share/settings/general'] = 'social-share/providers';
             $event->rules['social-share/settings/providers'] = 'social-share/providers';
             $event->rules['social-share/settings/providers/edit/<handle:{handle}>'] = 'social-share/providers/edit';
+
+            if (Craft::$app->getConfig()->getGeneral()->headlessMode || !Craft::$app->getConfig()->getGeneral()->cpTrigger) {
+                $event->rules['social-share/auth/callback'] = 'social-share/auth/callback';
+            }
         });
     }
 

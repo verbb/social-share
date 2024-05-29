@@ -6,6 +6,19 @@
 - Now requires PHP `8.2.0+`.
 - Now requires Craft `5.0.0+`.
 
+## 1.0.6 - 2024-05-29
+
+### Changed
+- Update English translations.
+
+## 1.0.5 - 2024-04-29
+
+### Added
+- Add support for `headlessMode` redirect URIs.
+
+### Changed
+- Update English translations.
+
 ## 1.0.4 - 2024-04-05
 
 ### Added
