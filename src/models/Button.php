@@ -171,7 +171,12 @@ class Button extends Model implements JsonSerializable
         $labelWrapper = Html::tag($labelWrapperTag, $label, $labelWrapperAttributes);
         $content = Html::tag($contentTag, $iconWrapper . $labelWrapper, $contentAttributes);
 
-        return Template::raw(Html::tag($buttonTag, $content, array_merge($this->getButtonAttributes(), $buttonAttributes)));
+        // Merge an normalize attributes
+        $buttonAttributes1 = Html::normalizeTagAttributes($this->getButtonAttributes());
+        $buttonAttributes2 = Html::normalizeTagAttributes($buttonAttributes);
+        $attributes = ArrayHelper::merge($buttonAttributes1, $buttonAttributes2);
+
+        return Template::raw(Html::tag($buttonTag, $content, $attributes));
     }
 
 
