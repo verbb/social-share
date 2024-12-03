@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.3 - 2024-12-04
+
+### Added
+- Add `Provider::getButtonAttributes()` to modify button HTML attributes.
+
+### Fixed
+- Fix Print button not working correctly.
+
 ## 2.0.2 - 2024-09-07
 
 ### Fixed
@@ -18,6 +26,14 @@
 ### Changed
 - Now requires PHP `8.2.0+`.
 - Now requires Craft `5.0.0+`.
+
+## 1.0.7 - 2024-12-04
+
+### Added
+- Add `Provider::getButtonAttributes()` to modify button HTML attributes.
+
+### Fixed
+- Fix Print button not working correctly.
 
 ## 1.0.6 - 2024-05-29
 
