@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.7 - 2024-12-04
+
+### Added
+- Add `Provider::getButtonAttributes()` to modify button HTML attributes.
+
+### Fixed
+- Fix Print button not working correctly.
+
 ## 1.0.6 - 2024-05-29
 
 ### Changed
