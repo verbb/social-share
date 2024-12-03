@@ -105,6 +105,11 @@ abstract class Provider extends SavableComponent implements ProviderInterface
         return null;
     }
 
+    public function getButtonAttributes(array $attributes): array
+    {
+        return $attributes;
+    }
+
     public function getShareButton(array $options = []): ?ShareButton
     {
         return new ShareButton([

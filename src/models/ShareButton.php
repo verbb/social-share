@@ -28,7 +28,7 @@ class ShareButton extends Button
             $attributes['rel'] = 'nofollow noopener noreferrer';
         }
 
-        return $attributes;
+        return $this->getProvider()->getButtonAttributes($attributes);
     }
 
     public function getProviderUrl(): ?string
