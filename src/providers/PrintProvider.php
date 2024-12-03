@@ -25,9 +25,12 @@ class PrintProvider extends Provider
     // Public Methods
     // =========================================================================
 
-    public function getShareUrl(string $url, ?string $text = null, array $params = []): ?string
+    public function getButtonAttributes(array $attributes): array
     {
-        return UrlHelper::urlWithParams('#', array_merge(['onclick' => 'window.print();'], $params));
+        // Override the modal behaviour
+        $attributes['onclick'] = 'window.print();';
+
+        return $attributes;
     }
 
 }

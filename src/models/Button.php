@@ -67,12 +67,14 @@ class Button extends Model implements JsonSerializable
 
     public function getButtonAttributes(): array
     {
-        return [
+        $attributes = [
             'href' => $this->getUrl(),
             'aria-label' => $this->getName(),
             'target' => '_blank',
             'rel' => 'nofollow noopener noreferrer',
         ];
+
+        return $this->getProvider()->getButtonAttributes($attributes);
     }
 
     public function getProvider(): Provider
