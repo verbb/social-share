@@ -4,6 +4,7 @@ You can provide your users a means to quickly share a page to social media with 
 The following providers support share buttons:
 
 - Blogger
+- Bluesky
 - Buffer
 - Diaspora
 - Digg
