@@ -41,6 +41,7 @@ class Providers extends Component
             providerTypes\Behance::class,
             providerTypes\Bitbucket::class,
             providerTypes\Blogger::class,
+            providerTypes\Bluesky::class,
             providerTypes\Buffer::class,
             providerTypes\CodePen::class,
             providerTypes\DeviantArt::class,
