@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.4 - 2025-03-04
+
+### Added
+- Add Bluesky provider.
+
 ## 2.0.3 - 2024-12-04
 
 ### Added
