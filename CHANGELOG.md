@@ -27,6 +27,11 @@
 - Now requires PHP `8.2.0+`.
 - Now requires Craft `5.0.0+`.
 
+## 1.0.8 - 2025-03-04
+
+### Added
+- Add Bluesky provider.
+
 ## 1.0.7 - 2024-12-04
 
 ### Added
