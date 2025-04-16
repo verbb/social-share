@@ -20,7 +20,7 @@ class ShareButton extends Button
 
         if ($settings->useModalForShare) {
             $attributes['onclick'] = 'window.open(this.dataset.url, "ss_share_dialog", "width=626,height=436");';
-            $attributes['href'] = 'javascript:void();';
+            $attributes['href'] = 'javascript:void(0);';
             $attributes['data-url'] = $this->getProviderUrl();
         } else {
             $attributes['href'] = $this->getProviderUrl();
