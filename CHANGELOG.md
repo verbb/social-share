@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.9 - 2025-07-18
+
+### Changed
+- Update English translations.
+- Bump `verbb/auth`.
+
 ## 1.0.8 - 2025-03-04
 
 ### Added
