@@ -32,6 +32,12 @@
 - Now requires PHP `8.2.0+`.
 - Now requires Craft `5.0.0+`.
 
+## 1.0.9 - 2025-07-18
+
+### Changed
+- Update English translations.
+- Bump `verbb/auth`.
+
 ## 1.0.8 - 2025-03-04
 
 ### Added
