@@ -27,7 +27,7 @@ class WhatsApp extends Provider
 
     public function getShareUrl(string $url, ?string $text = null, array $params = []): ?string
     {
-        $string = implode('+', array_filter([$text, $url]));
+        $string = implode(' ', array_filter([$text, $url]));
 
         return UrlHelper::urlWithParams('https://api.whatsapp.com/send', array_filter(array_merge([
             'text' => $string,
