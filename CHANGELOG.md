@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.6 - 2025-11-06
+
+### Fixed
+- Fix WhatsApp share link including `+` character for a custom text link.
+
 ## 2.0.5 - 2025-07-18
 
 ### Changed
