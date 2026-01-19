@@ -1,4 +1,4 @@
-<p align="center"><img src="https://verbb.imgix.net/plugins/social-share/social-share-icon.svg" width="100" height="100" alt="Social Share icon"></p>
+<p align="center"><img src="https://assets.verbb.io/plugins/social-share/social-share-icon.svg" width="100" height="100" alt="Social Share icon"></p>
 <h1 align="center">Social Share for Craft CMS</h1>
 
 Social Share is a toolkit for sharing and displaying social media information on your site. It can handle generating social media buttons, share dialogs and share counts.
