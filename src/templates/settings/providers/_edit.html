@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="input ltr">
-                    <a class="btn small formsubmit" data-action="social-share/auth/connect" data-param="provider" data-value="{{ provider.handle }}" data-redirect="{{ 'social-share/providers/' ~ provider.handle | hash }}">{{ 'Connect' | t('social-share') }}</a>
+                    <a class="btn small formsubmit" data-action="social-share/auth/connect" data-param="provider" data-value="{{ provider.handle }}" data-redirect="{{ ('social-share/providers/' ~ provider.handle) | hash }}">{{ 'Connect' | t('social-share') }}</a>
                 </div>
             </div>
         {% endif %}
