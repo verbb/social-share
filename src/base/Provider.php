@@ -6,6 +6,7 @@ use verbb\socialshare\models\Button;
 use verbb\socialshare\models\ShareButton;
 
 use craft\base\SavableComponent;
+use craft\helpers\UrlHelper;
 
 use Exception;
 
@@ -98,6 +99,11 @@ abstract class Provider extends SavableComponent implements ProviderInterface
     public function getIcon(): ?string
     {
         return ProviderHelper::getIcon(static::$handle);
+    }
+
+    public function getCpEditUrl(): ?string
+    {
+        return UrlHelper::cpUrl('social-share/providers/' . static::$handle);
     }
 
     public function getShareUrl(string $url, ?string $text = null, array $params = []): ?string

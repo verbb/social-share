@@ -43,6 +43,13 @@ class AuthController extends Controller
                 return $this->asFailure(Craft::t('social-share', 'Unable to find provider “{provider}”.', ['provider' => $providerHandle]));
             }
 
+            // Handle redirection correctly for CP-based requests, as we need to session-store it.
+            if ($this->request->getIsCpRequest()) {
+                if ($redirect = $this->request->getValidatedBodyParam('redirect')) {
+                    Session::set('redirect', $this->getView()->renderObjectTemplate($redirect, $provider));
+                }
+            }
+
             // Keep track of which provider instance is for, so we can fetch it in the callback
             Session::set('providerHandle', $providerHandle);
 
