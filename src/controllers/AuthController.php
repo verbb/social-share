@@ -119,7 +119,7 @@ class AuthController extends Controller
 
         Session::setNotice('social-share', Craft::t('social-share', '{provider} connected.', ['provider' => $provider->name]), true);
 
-        return $this->redirect($redirect);
+        return $this->redirect($this->getView()->renderObjectTemplate($redirect, $provider));
     }
 
     public function actionDisconnect(): ?Response
