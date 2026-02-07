@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.7 - 2026-02-07
+
+### Fixed
+- Fix a redirect error when connecting to a provider in the control panel.
+- Fix an error when creating a new provider.
+
 ## 2.0.6 - 2025-11-06
 
 ### Fixed
