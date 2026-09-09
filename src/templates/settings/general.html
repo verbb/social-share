@@ -1,0 +1,36 @@
+{% extends 'social-share/_layouts/settings' %}
+
+{% import '_includes/forms' as forms %}
+{% import 'verbb-base/_macros' as macros %}
+
+{% requireAdmin %}
+
+{% set fullPageForm = true %}
+{% set selectedTab = 'general' %}
+{% set pageTitle = 'General Settings' | t('social-share') %}
+{% set pageAction = 'plugins/save-plugin-settings' %}
+{% set pageUrl = 'social-share/settings' %}
+
+{% block settingsContent %}
+{{ forms.textField({
+    label: 'Plugin Name' | t('app'),
+    instructions: 'Plugin name for the end user.' | t('social-share'),
+    id: 'pluginName',
+    name: 'pluginName',
+    value: settings.pluginName,
+    autofocus: true,
+    required: true,
+    errors: settings.getErrors('pluginName'),
+    warning: macros.configWarning('pluginName', 'social-share'),
+}) }}
+
+{{ forms.lightswitchField({
+    label: 'Enable CP Section' | t('social-share'),
+    instructions: 'Whether to enable Social Share in the main sidebar navigation.' | t('social-share'),
+    id: 'hasCpSection',
+    name: 'hasCpSection',
+    on: settings.hasCpSection,
+    errors: settings.getErrors('hasCpSection'),
+    warning: macros.configWarning('hasCpSection', 'social-share'),
+}) }}
+{% endblock %}

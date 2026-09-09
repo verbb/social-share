@@ -94,9 +94,9 @@ class SocialShare extends Plugin
     private function _registerCpRoutes(): void
     {
         Event::on(UrlManager::class, UrlManager::EVENT_REGISTER_CP_URL_RULES, function(RegisterUrlRulesEvent $event) {
-            $event->rules['social-share'] = 'social-share/providers';
-            $event->rules['social-share/settings'] = 'social-share/providers';
-            $event->rules['social-share/settings/general'] = 'social-share/providers';
+            $event->rules['social-share'] = 'social-share/plugin/settings';
+            $event->rules['social-share/settings'] = 'social-share/plugin/settings';
+            $event->rules['social-share/settings/general'] = 'social-share/plugin/settings';
             $event->rules['social-share/settings/providers'] = 'social-share/providers';
             $event->rules['social-share/settings/providers/edit/<handle:{handle}>'] = 'social-share/providers/edit';
 

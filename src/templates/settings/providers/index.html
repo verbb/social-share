@@ -1,15 +1,15 @@
-{% extends 'social-share/_layouts' %}
+{% extends 'social-share/_layouts/settings' %}
 
 {% requireAdmin %}
 
+{% set selectedTab = 'providers' %}
+{% set pageTitle = 'Providers' | t('social-share') %}
+
 {% do view.registerAssetBundle('craft\\web\\assets\\admintable\\AdminTableAsset') -%}
 
-{% set crumbs = [
-    { label: craft.socialShare.getPluginName() | t('social-share'), url: url('social-share/settings') },
-    { label: 'Providers' | t('social-share'), url: url('social-share/settings/providers') }
-] %}
+{% block settingsMeta %}{% endblock %}
 
-{% block blockContent %}
+{% block settingsContent %}
 
 <div id="providers-vue-admin-table"></div>
 

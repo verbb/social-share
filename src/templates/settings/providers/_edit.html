@@ -1,12 +1,10 @@
-{% extends 'social-share/_layouts' %}
+{% extends 'social-share/_layouts/settings' %}
 {% import '_includes/forms' as forms %}
 
 {% requireAdmin %}
 
-{% set crumbs = [
-    { label: craft.socialShare.getPluginName() | t('social-share'), url: url('social-share/settings') },
-    { label: 'Providers' | t('social-share'), url: url('social-share/settings/providers') }
-] %}
+{% set selectedTab = 'providers' %}
+{% set pageTitle = provider.name | t('social-share') %}
 
 {% set fullPageForm = craft.app.config.general.allowAdminChanges %}
 {% set title = provider.name %}
@@ -36,10 +34,12 @@
 {% endblock %}
 
 
-{% block blockContent %}
+{% block settingsMeta %}{% endblock %}
 
-<input type="hidden" name="action" value="social-share/providers/save">
-<input type="hidden" name="handle" value="{{ provider.handle }}">
+{% block settingsContent %}
+
+{{ actionInput('social-share/providers/save') }}
+{{ hiddenInput('handle', provider.handle) }}
 {{ redirectInput('social-share/settings/providers') }}
 
 {% if not craft.app.config.general.allowAdminChanges %}
