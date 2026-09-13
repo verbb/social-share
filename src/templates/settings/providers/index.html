@@ -3,7 +3,7 @@
 {% requireAdmin %}
 
 {% set selectedTab = 'providers' %}
-{% set pageTitle = 'Providers' | t('social-share') %}
+{% set title = 'Providers' | t('social-share') %}
 
 {% do view.registerAssetBundle('craft\\web\\assets\\admintable\\AdminTableAsset') -%}
 
@@ -58,7 +58,7 @@
 
     new Craft.VueAdminTable({
         columns: columns,
-        container: '#providers-vue-admin-table',
+        container: '#{{ 'providers-vue-admin-table' | namespaceInputId('settings') }}',
         emptyMessage: Craft.t('social-share', 'No providers exist yet.'),
         tableData: {{ tableData | json_encode | raw }},
     });
