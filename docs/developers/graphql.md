@@ -27,7 +27,7 @@ Social Share supports accessing [Share](docs:feature-tour/share-counts) and [Fol
 ```
 :::
 
-### The `shares` query
+### The `shares` Query
 This query is used to query for the [Share](docs:feature-tour/share-counts) count of a provided URL and a provider handle. The `handle` and `url` arguments are required.
 
 | Argument | Type | Description
@@ -65,7 +65,7 @@ This query is used to query for the [Share](docs:feature-tour/share-counts) coun
 ```
 :::
 
-### The `followers` query
+### The `followers` Query
 This query is used to query for the [Follower](docs:feature-tour/follower-counts) count of a provided account identifier and a provider handle. The `handle` and `account` arguments are required.
 
 | Argument | Type | Description
@@ -126,7 +126,7 @@ This query is used to query for the [Follower](docs:feature-tour/follower-counts
 :::
 
 
-### The `shareButtons` query
+### The `shareButtons` Query
 This query is used to query [Share Button](docs:feature-tour/share-buttons) objects. You can also use the singular `shareButton` to fetch a single share button.
 
 | Argument | Type | Description
@@ -137,7 +137,7 @@ This query is used to query [Share Button](docs:feature-tour/share-buttons) obje
 | `params`| `[String]` | Provide any other params to be included in the share URL.
 
 
-### The `ShareButtonInterface` interface
+### The `ShareButtonInterface` Interface
 This is the interface implemented by all share buttons.
 
 | Field | Type | Description
@@ -196,7 +196,7 @@ This is the interface implemented by all share buttons.
 :::
 
 
-### The `buttons` query
+### The `buttons` Query
 This query is used to query [Button](docs:feature-tour/buttons) objects. You can also use the singular `button` to fetch a single button.
 
 | Argument | Type | Description
@@ -204,7 +204,7 @@ This query is used to query [Button](docs:feature-tour/buttons) objects. You can
 | `handle`| `[String]` | Narrows the query results based on the button provider’s handle.
 
 
-### The `ButtonInterface` interface
+### The `ButtonInterface` Interface
 This is the interface implemented by all buttons.
 
 | Field | Type | Description

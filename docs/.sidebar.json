@@ -12,10 +12,10 @@
         "title": "Feature Tour",
         "collapsable": false,
         "children": [
-            "feature-tour/share-counts",
-            "feature-tour/follower-counts",
             "feature-tour/share-buttons",
-            "feature-tour/buttons"
+            "feature-tour/buttons",
+            "feature-tour/share-counts",
+            "feature-tour/follower-counts"
         ]
     },
     {
@@ -30,7 +30,9 @@
         "title": "Template Guides",
         "collapsable": false,
         "children": [
-            "template-guides/available-variables",
+            "template-guides/choosing-share-providers",
+            "template-guides/displaying-social-counts",
+            "template-guides/rendering-social-buttons",
             "template-guides/rendering-buttons"
         ]
     },
@@ -38,11 +40,17 @@
         "title": "Developers",
         "collapsable": false,
         "children": [
-            "developers/provider",
             "developers/custom-provider",
-            "developers/share-button",
-            "developers/button",
             "developers/graphql"
+        ]
+    },
+    {
+        "title": "Reference",
+        "collapsable": false,
+        "children": [
+            "developers/provider",
+            "developers/share-button",
+            "developers/button"
         ]
     }
 ]

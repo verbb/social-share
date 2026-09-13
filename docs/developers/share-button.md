@@ -5,9 +5,14 @@ Whenever you're dealing with a button in your template, you're actually working 
 A Share Button inherits from a [Button](docs:developers/button), so anything defined there can also be used.
 :::
 
-## Attributes
+<span id="attributes"></span>
 
-Attribute | Description
---- | ---
-`providerUrl` | The share URL unique to each provider.
+## Properties
 
+::: reference
+### `providerUrl`
+
+**Type:** `string|null`
+
+The share URL unique to each provider.
+:::
