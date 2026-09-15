@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+- Fix saving provider settings after settings layout changes.
+
 ## 2.0.10 - 2026-09-14
 
 ### Changed

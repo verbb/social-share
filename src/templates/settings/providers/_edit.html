@@ -36,7 +36,10 @@
 
 {% block settingsMeta %}{% endblock %}
 
-{% block settingsContent %}
+{# Action parameters must remain outside the shared settings namespace. #}
+{% block blockContent %}
+
+<h2>{{ pageTitle }}</h2>
 
 {{ actionInput('social-share/providers/save') }}
 {{ hiddenInput('handle', provider.handle) }}
