@@ -43,17 +43,17 @@ class AuthController extends Controller
                 return $this->asFailure(Craft::t('social-share', 'Unable to find provider “{provider}”.', ['provider' => $providerHandle]));
             }
 
-            // Handle redirection correctly for CP-based requests, as we need to session-store it.
+            $context = [
+                'providerHandle' => $providerHandle,
+            ];
+
             if ($this->request->getIsCpRequest()) {
                 if ($redirect = $this->request->getValidatedBodyParam('redirect')) {
-                    Session::set('redirect', $this->getView()->renderObjectTemplate($redirect, $provider));
+                    $context['redirect'] = $this->getView()->renderObjectTemplate($redirect, $provider);
                 }
             }
 
-            // Keep track of which provider instance is for, so we can fetch it in the callback
-            Session::set('providerHandle', $providerHandle);
-
-            return Auth::getInstance()->getOAuth()->connect('social-share', $provider);
+            return Auth::getInstance()->getOAuth()->connect('social-share', $provider, $provider->handle, $context);
         } catch (Throwable $e) {
             SocialShare::error('Unable to authorize connect “{provider}”: “{message}” {file}:{line}', [
                 'provider' => $providerHandle,
@@ -68,8 +68,13 @@ class AuthController extends Controller
 
     public function actionCallback(): ?Response
     {
-        // Restore the session data that we saved before authorization redirection from the cache back to session
-        Session::restoreSession($this->request->getParam('state'));
+        $oauth = Auth::getInstance()->getOAuth();
+
+        if ($response = $oauth->prepareCallback('social-share')) {
+            return $response;
+        }
+
+        $oauth->claimCallback('social-share');
         
         // Get both the origin (failure) and redirect (success) URLs
         $origin = Session::get('origin');
@@ -90,7 +95,7 @@ class AuthController extends Controller
 
         try {
             // Fetch the access token from the provider and create a Token for us to use
-            $token = Auth::getInstance()->getOAuth()->callback('social-share', $provider);
+            $token = $oauth->callback('social-share', $provider, $provider->handle);
 
             if (!$token) {
                 Session::setError('social-share', Craft::t('social-share', 'Unable to fetch token.'), true);
