@@ -4,6 +4,7 @@ namespace verbb\socialshare\controllers;
 use verbb\socialshare\SocialShare;
 
 use Craft;
+use craft\elements\User;
 use craft\web\Controller;
 
 use yii\web\Response;
@@ -18,7 +19,7 @@ class AuthController extends Controller
     // Properties
     // =========================================================================
 
-    protected array|int|bool $allowAnonymous = ['connect', 'callback'];
+    protected array|int|bool $allowAnonymous = ['callback'];
 
 
     // Public Methods
@@ -36,6 +37,9 @@ class AuthController extends Controller
 
     public function actionConnect(): ?Response
     {
+        $this->requireAdmin();
+        $this->requirePostRequest();
+
         $providerHandle = $this->request->getRequiredParam('provider');
 
         try {
@@ -74,7 +78,7 @@ class AuthController extends Controller
             return $response;
         }
 
-        $oauth->claimCallback('social-share');
+        $oauth->claimAuthorizedCallback('social-share', fn(User $user): bool => $user->admin);
         
         // Get both the origin (failure) and redirect (success) URLs
         $origin = Session::get('origin');
@@ -129,6 +133,9 @@ class AuthController extends Controller
 
     public function actionDisconnect(): ?Response
     {
+        $this->requireAdmin();
+        $this->requirePostRequest();
+
         $providerHandle = $this->request->getRequiredParam('provider');
 
         if (!($provider = SocialShare::$plugin->getProviders()->getProviderByHandle($providerHandle))) {
