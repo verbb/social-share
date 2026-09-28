@@ -7,6 +7,7 @@ use verbb\socialshare\base\OAuthProvider;
 use Craft;
 use craft\web\Controller;
 
+use yii\web\BadRequestHttpException;
 use yii\web\HttpException;
 use yii\web\Response;
 
@@ -14,6 +15,18 @@ class ProvidersController extends Controller
 {
     // Public Methods
     // =========================================================================
+
+    public function beforeAction($action): bool
+    {
+        if (!parent::beforeAction($action)) {
+            return false;
+        }
+
+        $this->requireCpRequest();
+        $this->requireAdmin();
+
+        return true;
+    }
 
     public function actionIndex(): Response
     {
@@ -42,8 +55,16 @@ class ProvidersController extends Controller
     {
         $this->requirePostRequest();
 
-        $handle = $this->request->getParam('handle');
-        $settings = $this->request->getParam('settings');
+        $handle = $this->request->getRequiredBodyParam('handle');
+        $settings = $this->request->getBodyParam('settings', []);
+
+        if (!is_string($handle) || $handle === '') {
+            throw new BadRequestHttpException('Provider handle must be a non-empty string.');
+        }
+
+        if (!is_array($settings)) {
+            throw new BadRequestHttpException('Provider settings must be an array.');
+        }
 
         $provider = SocialShare::$plugin->getProviders()->getProviderByHandle($handle);
 
@@ -51,6 +72,8 @@ class ProvidersController extends Controller
             throw new HttpException(404);
         }
 
+        // A provider's settings contract is also the persistence allowlist for custom providers.
+        $settings = array_intersect_key($settings, array_flip($provider->settingsAttributes()));
         $provider->setAttributes($settings, false);
 
         if (!SocialShare::$plugin->getProviders()->saveProvider($provider)) {
