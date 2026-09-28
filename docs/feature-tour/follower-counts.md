@@ -5,24 +5,24 @@ Follower counts are heavily cached to prevent slow page loading, and triggering 
 
 The following providers support fetching follower counts:
 
-- Behance
 - Dribbble
-- Envato
+- [Envato](docs:providers/envato)
 - Facebook
 - Feedly
 - GitHub
 - Instagram
-- Mailchimp
+- [Mailchimp](docs:providers/mailchimp)
 - MixCloud
 - Pinterest
 - SoundCloud
 - Spotify
 - Steam
-- Vimeo
 - Vkontakte
 - X (Twitter)
 - YouTube Channel
 - YouTube User
+
+Mailchimp and Envato require credentials from your own provider accounts. Configure these under **Settings → Social Share → Providers** before requesting their follower counts. Environment variables keep the credential value out of project config.
 
 ## Getting Follower Count Providers
 You can fetch all providers that support follower counts. This will return a collection of [Provider](docs:developers/provider) objects.
@@ -71,4 +71,3 @@ By default, Social Share will convert the raw number (e.g. `54624`) to a "friend
 {# Would render... #}
 87372
 ```
-

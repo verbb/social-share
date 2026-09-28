@@ -3,13 +3,18 @@
 ## Unreleased
 
 ### Changed
+- Mailchimp and Envato follower counts now require API credentials from the site’s own provider accounts.
 - Route plugin settings through the plugin’s authorized settings controller.
 
 ### Fixed
+- Fixed a source credential exposure vulnerability.
 - Fixed authorization and request assignment for provider management.
 - Fixed OAuth callback transaction validation.
 - Fixed authorization for connecting and disconnecting OAuth providers.
 - Fixed OAuth callback redirects being evaluated as Twig templates.
+
+### Removed
+- Removed Behance and Vimeo follower counts, and LinkedIn and X (Twitter) share counts because their upstream APIs no longer support them.
 
 ## 2.0.11 - 2026-09-20
 

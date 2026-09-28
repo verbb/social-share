@@ -22,7 +22,9 @@
         "title": "Providers",
         "collapsable": false,
         "children": [
+            "providers/envato",
             "providers/facebook",
+            "providers/mailchimp",
             "providers/twitter"
         ]
     },

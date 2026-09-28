@@ -1,0 +1,14 @@
+{% import '_includes/forms' as forms %}
+{% import 'verbb-base/_macros' as macros %}
+
+{{ forms.autosuggestField({
+    first: true,
+    label: 'Personal Token' | t('social-share'),
+    instructions: 'Enter your Envato personal token. Environment variables are recommended.' | t('social-share'),
+    name: 'personalToken',
+    required: true,
+    suggestEnvVars: true,
+    value: provider.personalToken ?? '',
+    warning: macros.configWarning("providers.#{provider.handle}.personalToken", 'social-share'),
+    errors: provider.getErrors('personalToken'),
+}) }}

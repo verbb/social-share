@@ -4,6 +4,8 @@ namespace verbb\socialshare\services;
 use verbb\socialshare\SocialShare;
 use verbb\socialshare\models\Button;
 use verbb\socialshare\models\ShareButton;
+use verbb\socialshare\providers\Envato;
+use verbb\socialshare\providers\Mailchimp;
 
 use Craft;
 use craft\base\Component;
@@ -19,7 +21,11 @@ class Service extends Component
     {
         $provider = SocialShare::$plugin->getProviders()->getProviderByHandle($handle);
 
-        if (!$provider) {
+        if (!$provider || !$provider::supportsFollowersCount()) {
+            return null;
+        }
+
+        if (($provider instanceof Envato || $provider instanceof Mailchimp) && !$provider->isConfigured()) {
             return null;
         }
 
@@ -61,7 +67,7 @@ class Service extends Component
     {
         $provider = SocialShare::$plugin->getProviders()->getProviderByHandle($handle);
 
-        if (!$provider) {
+        if (!$provider || !$provider::supportsSharesCount()) {
             return null;
         }
 

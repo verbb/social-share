@@ -4,6 +4,7 @@ namespace verbb\socialshare\providers;
 use verbb\socialshare\base\Provider;
 
 use Craft;
+use craft\helpers\App;
 use craft\helpers\Json;
 
 use Throwable;
@@ -12,6 +13,11 @@ class Mailchimp extends Provider
 {
     // Static Methods
     // =========================================================================
+
+    public static function hasSettings(): bool
+    {
+        return true;
+    }
 
     public static function supportsFollowersCount(): bool
     {
@@ -23,23 +29,47 @@ class Mailchimp extends Provider
     // =========================================================================
 
     public static string $handle = 'mailchimp';
+    public ?string $apiKey = null;
 
 
     // Public Methods
     // =========================================================================
 
+    public function getApiKey(): ?string
+    {
+        $apiKey = App::parseEnv($this->apiKey);
+
+        return is_string($apiKey) ? $apiKey : null;
+    }
+
+    public function isConfigured(): bool
+    {
+        return (bool)$this->getApiKey();
+    }
+
+    public function getSettingsHtml(): ?string
+    {
+        return Craft::$app->getView()->renderTemplate('social-share/providers/mailchimp', [
+            'provider' => $this,
+        ]);
+    }
+
     public function getFollowersCount(string $account): ?int
     {
+        $apiKey = $this->getApiKey();
+
+        if (!$apiKey || !preg_match('/-([a-z]{2}\d+)$/i', $apiKey, $matches)) {
+            return null;
+        }
+
         try {
             $client = Craft::createGuzzleClient();
 
-            $accessToken = 'f37d643ee6d59070c09a8a196e204eb2-us17';
-            $server = explode('-', $accessToken);
-            $host = end($server);
+            $host = strtolower($matches[1]);
 
             $response = $client->get("https://$host.api.mailchimp.com/3.0/lists/$account", [
                 'headers' => [
-                    'Authorization' => 'apikey ' . $accessToken,
+                    'Authorization' => 'apikey ' . $apiKey,
                 ],
             ]);
 
@@ -55,6 +85,18 @@ class Mailchimp extends Provider
         }
 
         return null;
+    }
+
+
+    // Protected Methods
+    // =========================================================================
+
+    protected function defineRules(): array
+    {
+        $rules = parent::defineRules();
+        $rules[] = [['apiKey'], 'required'];
+
+        return $rules;
     }
 
 }

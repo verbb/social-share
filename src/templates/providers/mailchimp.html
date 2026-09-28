@@ -1,0 +1,14 @@
+{% import '_includes/forms' as forms %}
+{% import 'verbb-base/_macros' as macros %}
+
+{{ forms.autosuggestField({
+    first: true,
+    label: 'API Key' | t('social-share'),
+    instructions: 'Enter your Mailchimp Marketing API key. Environment variables are recommended.' | t('social-share'),
+    name: 'apiKey',
+    required: true,
+    suggestEnvVars: true,
+    value: provider.apiKey ?? '',
+    warning: macros.configWarning("providers.#{provider.handle}.apiKey", 'social-share'),
+    errors: provider.getErrors('apiKey'),
+}) }}

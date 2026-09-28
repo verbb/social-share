@@ -7,11 +7,9 @@ The following providers support fetching share counts:
 
 - Buffer
 - Facebook
-- LinkedIn
 - Pinterest
 - Reddit
 - Tumblr
-- X (Twitter)
 - Yummly
 
 ## Getting Share Count Providers
@@ -79,4 +77,3 @@ By default, Social Share will convert the raw number (e.g. `54624`) to a "friend
 {# Would render... #}
 87372
 ```
-

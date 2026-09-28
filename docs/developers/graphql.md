@@ -10,7 +10,6 @@ Social Share supports accessing [Share](docs:feature-tour/share-counts) and [Fol
 {
     socialShare {
         shares(handle: "facebook", url: "https://www.nytimes.com")
-        twitterShares: shares(handle: "twitter", url: "https://www.nytimes.com")
     }
 }
 ```
@@ -19,8 +18,7 @@ Social Share supports accessing [Share](docs:feature-tour/share-counts) and [Fol
 {
     "data": {
         "socialShare": {
-            "shares": "4.1M",
-            "twitterShares": "5.7M"
+            "shares": "4.1M"
         }
     }
 }
@@ -213,4 +211,3 @@ This is the interface implemented by all buttons.
 | `handle`| `String` | The button provider’s handle.
 | `primaryColor`| `String` | The button provider’s primary brand color.
 | `icon`| `String` | The button provider’s SVG icon.
-

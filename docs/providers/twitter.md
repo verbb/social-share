@@ -1,11 +1,12 @@
 # Twitter
 
-## Share Counts
-Twitter's API no longer allow us to query share counts directly. Instead, we rely on [TwitCount](https://twitcount.com) as a free service that aggregate the data.
+Twitter supports share buttons and follower counts. Share counts aren't available.
 
-Follow the steps below to enable Twitter share counts using TwitCount.
+Follower counts require credentials from a Twitter developer application with access to the API used by your account. Store each value in an environment variable so it isn't written directly to project config.
 
-1. Visit [TwitCount](https://twitcount.com) and sign up for a free account. Before clicking the button, make sure you are logged into the Twitter account you want to use for your site.
-2. Input the domain for which you want to count shares. For example, entering in `verbb.io` will report back any URLs shared from [verbb.io](https://verbb.io) on Twitter.
-3. Once done, counts will start appearing within 1 hour. 
+1. Open **Settings → Social Share → Providers → Twitter** in the Craft control panel.
+2. Select the environment variable containing your **Client ID**.
+3. Select the environment variable containing your **Client Secret**.
+4. Save the provider.
 
+Your Twitter developer account and access level determine whether follower requests are permitted.

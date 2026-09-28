@@ -25,11 +25,6 @@ class Twitter extends Provider
         return true;
     }
 
-    public static function supportsSharesCount(): bool
-    {
-        return true;
-    }
-
     public static function supportsShareButton(): bool
     {
         return true;
@@ -117,33 +112,6 @@ class Twitter extends Provider
 
         return null;
     }
-
-    public function getSharesCount(string $url): ?int
-    {
-        try {
-            $client = Craft::createGuzzleClient();
-
-            $response = $client->get('https://api.sharedcount.com/v1.0/', [
-                'query' => [
-                    'url' => $url,
-                    'apikey' => '1934f519a63e142e0d3c893e59cc37fe0172e98a',
-                ],
-            ]);
-
-            $response = Json::decode((string)$response->getBody());
-
-            return $response['Twitter'] ?? null;
-        } catch (Throwable $e) {
-            Provider::error($this, Craft::t('social-share', 'API error: “{message}” {file}:{line}', [
-                'message' => $e->getMessage(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-            ]));
-        }
-
-        return null;
-    }
-
 
     // Protected Methods
     // =========================================================================
