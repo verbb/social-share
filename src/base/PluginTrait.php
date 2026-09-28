@@ -30,6 +30,9 @@ trait PluginTrait
     public static function config(): array
     {
         Plugin::bootstrapPlugin('social-share');
+        Plugin::setFileLogging('social-share', 'verbb\\socialshare\\*', [
+            'logContext' => false,
+        ]);
 
         return [
             'components' => [

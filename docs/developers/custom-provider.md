@@ -21,6 +21,11 @@ Create the following class to house your Provider logic.
 <?php
 namespace modules\sitemodule;
 
+use verbb\socialshare\base\Provider;
+use verbb\socialshare\helpers\ProviderLog;
+
+use Throwable;
+
 class MyProvider extends Provider
 {
     // Properties
@@ -77,6 +82,21 @@ public function getSharesCount(string $url): ?int
     // Your logic to fetch the shares count
 }
 ```
+
+### Logging Provider Errors
+If a provider API request fails, use the shared helper so logs retain a useful provider handle and exception class without recording credentials or request data from the exception:
+
+```php
+try {
+    // Your logic to fetch the count
+} catch (Throwable $exception) {
+    ProviderLog::apiError($this, $exception);
+
+    return null;
+}
+```
+
+Do not log raw exception messages or traces, access tokens, client secrets, OAuth codes or state, response bodies, request headers, or complete URLs and query strings. `ProviderLog` is separate from the provider base class so it does not conflict with custom provider methods. Custom providers can keep returning `null` after a failed count request so templates retain the built-in failure behaviour.
 
 ### Supporting Share Button
 If your provider supports having content shared to it, you can configure the following:

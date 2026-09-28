@@ -1,7 +1,6 @@
 <?php
 
 return [
-  'API error: “{message}” {file}:{line}' => 'API error: “{message}” {file}:{line}',
   'Client ID' => 'Client ID',
   'Client Secret' => 'Client Secret',
   'Configured' => 'Configured',
@@ -30,7 +29,7 @@ return [
   'Unable to fetch token.' => 'Unable to fetch token.',
   'Unable to find provider.' => 'Unable to find provider.',
   'Unable to find provider “{provider}”.' => 'Unable to find provider “{provider}”.',
-  'Unable to process callback for “{provider}”: “{message}” {file}:{line}' => 'Unable to process callback for “{provider}”: “{message}” {file}:{line}',
+  'Unable to process callback for “{provider}”.' => 'Unable to process callback for “{provider}”.',
   'Use this URI when setting up your {provider} app.' => 'Use this URI when setting up your {provider} app.',
   '{provider} connected.' => '{provider} connected.',
   '{provider} disconnected.' => '{provider} disconnected.',

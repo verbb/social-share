@@ -41,6 +41,7 @@ class AuthController extends Controller
         $this->requirePostRequest();
 
         $providerHandle = $this->request->getRequiredParam('provider');
+        $provider = null;
 
         try {
             if (!($provider = SocialShare::$plugin->getProviders()->getProviderByHandle($providerHandle))) {
@@ -59,12 +60,13 @@ class AuthController extends Controller
 
             return Auth::getInstance()->getOAuth()->connect('social-share', $provider, $provider->handle, $context);
         } catch (Throwable $e) {
-            SocialShare::error('Unable to authorize connect “{provider}”: “{message}” {file}:{line}', [
-                'provider' => $providerHandle,
-                'message' => $e->getMessage(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-            ]);
+            $providerHandle = $provider?->handle ?? 'unknown';
+
+            SocialShare::error(sprintf(
+                'Unable to authorize provider connection for “%s” (%s).',
+                $providerHandle,
+                $e::class,
+            ));
 
             return $this->asFailure(Craft::t('social-share', 'Unable to authorize connect “{provider}”.', ['provider' => $providerHandle]));
         }
@@ -111,16 +113,15 @@ class AuthController extends Controller
             $token->reference = $provider->handle;
             Auth::getInstance()->getTokens()->upsertToken($token);
         } catch (Throwable $e) {
-            $error = Craft::t('social-share', 'Unable to process callback for “{provider}”: “{message}” {file}:{line}', [
-                'provider' => $providerHandle,
-                'message' => $e->getMessage(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-            ]);
+            $error = Craft::t('social-share', 'Unable to process callback for “{provider}”.', ['provider' => $provider->name]);
 
-            SocialShare::error($error);
+            SocialShare::error(sprintf(
+                'Unable to process callback for provider “%s” (%s).',
+                $provider->handle,
+                $e::class,
+            ));
 
-            // Show the error detail in the CP
+            // Show a generic error in the CP
             Craft::$app->getSession()->setFlash('social-share:callback-error', $error);
 
             return $this->redirect($origin);

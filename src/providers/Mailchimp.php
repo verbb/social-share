@@ -2,6 +2,7 @@
 namespace verbb\socialshare\providers;
 
 use verbb\socialshare\base\Provider;
+use verbb\socialshare\helpers\ProviderLog;
 
 use Craft;
 use craft\helpers\App;
@@ -77,11 +78,7 @@ class Mailchimp extends Provider
 
             return $response['stats']['member_count'] ?? null;
         } catch (Throwable $e) {
-            Provider::error($this, Craft::t('social-share', 'API error: “{message}” {file}:{line}', [
-                'message' => $e->getMessage(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-            ]));
+            ProviderLog::apiError($this, $e);
         }
 
         return null;

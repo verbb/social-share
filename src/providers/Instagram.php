@@ -2,6 +2,7 @@
 namespace verbb\socialshare\providers;
 
 use verbb\socialshare\base\OAuthProvider;
+use verbb\socialshare\helpers\ProviderLog;
 
 use Craft;
 
@@ -92,11 +93,7 @@ class Instagram extends OAuthProvider
 
             return $count;
         } catch (Throwable $e) {
-            OAuthProvider::error($this, Craft::t('social-share', 'API error: “{message}” {file}:{line}', [
-                'message' => $e->getMessage(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-            ]));
+            ProviderLog::apiError($this, $e);
         }
 
         return null;
