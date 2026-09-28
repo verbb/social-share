@@ -24,6 +24,12 @@ class FollowersResolver extends Resolver
             throw new Exception('You must provide an `account` argument to query `followers`.');
         }
 
-        return SocialShare::$plugin->getService()->getFollowers($arguments['handle'], $arguments['account'], $arguments);
+        $options = [];
+
+        if (array_key_exists('friendlyCount', $arguments)) {
+            $options['friendlyCount'] = $arguments['friendlyCount'];
+        }
+
+        return SocialShare::$plugin->getService()->getFollowers($arguments['handle'], $arguments['account'], $options);
     }
 }

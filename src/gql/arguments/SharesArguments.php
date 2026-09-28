@@ -31,12 +31,12 @@ class SharesArguments extends Arguments
             'enableCache' => [
                 'name' => 'enableCache',
                 'type' => Type::boolean(),
-                'description' => 'Whether to enable the cache for results.',
+                'description' => 'Retained for query compatibility but ignored. The site’s Social Share settings control result caching.',
             ],
             'cacheDuration' => [
                 'name' => 'cacheDuration',
                 'type' => Type::int(),
-                'description' => 'The number of seconds to cache results for.',
+                'description' => 'Retained for query compatibility but ignored. The site’s Social Share settings control the cache duration.',
             ],
         ];
     }

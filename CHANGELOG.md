@@ -7,6 +7,7 @@
 - Route plugin settings through the plugin’s authorized settings controller.
 
 ### Fixed
+- Fixed a moderate-severity resource consumption vulnerability.
 - Fixed an information disclosure vulnerability.
 - Fixed a source credential exposure vulnerability.
 - Fixed authorization and request assignment for provider management.

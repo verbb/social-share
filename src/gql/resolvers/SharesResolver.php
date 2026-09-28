@@ -24,6 +24,12 @@ class SharesResolver extends Resolver
             throw new Exception('You must provide a `url` argument to query `shares`.');
         }
 
-        return SocialShare::$plugin->getService()->getShares($arguments['handle'], $arguments['url'], $arguments);
+        $options = [];
+
+        if (array_key_exists('friendlyCount', $arguments)) {
+            $options['friendlyCount'] = $arguments['friendlyCount'];
+        }
+
+        return SocialShare::$plugin->getService()->getShares($arguments['handle'], $arguments['url'], $options);
     }
 }

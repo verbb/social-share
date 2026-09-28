@@ -22,26 +22,20 @@ You can fetch all providers that support share counts. This will return a collec
 ```
 
 ## Getting Share Counts
-You'll also want to fetch the counts for the current page. You can do so by calling `getShares()` for the provider you want to check against. Let's fetch share counts for the current page from Facebook.
-
-```twig
-{{ craft.socialShare.getShares('facebook') }}
-```
-
-This should return the total number of times the current page has been shared on Facebook (e.g. `54.6K`).
-
-The current URL will be used, but you can change this to be whatever URL you require. For example, this is the same as what Social Share does by default, but omitting the second parameter:
-
-```twig
-{% set url = craft.app.request.absoluteUrl %}
-
-{{ craft.socialShare.getShares('facebook', url) }}
-```
-
-And if you're on an entry, you could use the entry URL:
+You'll also want to fetch the counts for a page. Call `getShares()` with the provider and a stable, canonical URL that identifies the content. For an entry, use its URL directly:
 
 ```twig
 {{ craft.socialShare.getShares('facebook', entry.url) }}
+```
+
+This should return the total number of times the entry has been shared on Facebook (e.g. `54.6K`).
+
+Pass the URL explicitly. Avoid using `craft.app.request.absoluteUrl` when it contains tracking or other visitor-specific query parameters, because providers and Social Share treat each complete URL as a separate count and cache lookup.
+
+```twig
+{% set url = entry.url %}
+
+{{ craft.socialShare.getShares('facebook', url) }}
 ```
 
 But you can also use a completely arbitrary URL - it doesn't even have to be from your website.

@@ -28,13 +28,15 @@ Social Share supports accessing [Share](docs:feature-tour/share-counts) and [Fol
 ### The `shares` Query
 This query is used to query for the [Share](docs:feature-tour/share-counts) count of a provided URL and a provider handle. The `handle` and `url` arguments are required.
 
+GraphQL count queries always use the cache policy configured by the site. The `enableCache` and `cacheDuration` arguments remain available so existing queries continue to validate, but they are ignored and will be removed in the next major version.
+
 | Argument | Type | Description
 | - | - | -
 | `handle`| `String` | Narrows the query results based on the shares provider’s handle.
 | `url`| `String` | Narrows the query results based on the URL to check shares for.
 | `friendlyCount`| `Boolean` | Whether the returned count should be a "friendly" number.
-| `enableCache`| `Boolean` | Whether to enable the cache for results.
-| `cacheDuration`| `Int` | The number of seconds to cache results for.
+| `enableCache`| `Boolean` | Retained for query compatibility but ignored. The site’s Social Share settings control result caching.
+| `cacheDuration`| `Int` | Retained for query compatibility but ignored. The site’s Social Share settings control the cache duration.
 
 
 ## Follower Counts
@@ -66,13 +68,15 @@ This query is used to query for the [Share](docs:feature-tour/share-counts) coun
 ### The `followers` Query
 This query is used to query for the [Follower](docs:feature-tour/follower-counts) count of a provided account identifier and a provider handle. The `handle` and `account` arguments are required.
 
+GraphQL count queries always use the cache policy configured by the site. The `enableCache` and `cacheDuration` arguments remain available so existing queries continue to validate, but they are ignored and will be removed in the next major version.
+
 | Argument | Type | Description
 | - | - | -
 | `handle`| `String` | Narrows the query results based on the shares provider’s handle.
 | `account`| `String` | Narrows the query results based on the account to check followers for.
 | `friendlyCount`| `Boolean` | Whether the returned count should be a "friendly" number.
-| `enableCache`| `Boolean` | Whether to enable the cache for results.
-| `cacheDuration`| `Int` | The number of seconds to cache results for.
+| `enableCache`| `Boolean` | Retained for query compatibility but ignored. The site’s Social Share settings control result caching.
+| `cacheDuration`| `Int` | Retained for query compatibility but ignored. The site’s Social Share settings control the cache duration.
 
 
 ## Share Buttons
