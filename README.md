@@ -1,16 +1,18 @@
 <p align="center"><img src="https://assets.verbb.io/plugins/social-share/social-share-icon.svg" width="100" height="100" alt="Social Share icon"></p>
 <h1 align="center">Social Share for Craft CMS</h1>
 
-Social Share is a Craft CMS plugin for sharing and displaying social media information on your site. It can handle generating social media buttons, share dialogs and share counts.
+Social Share is a Craft CMS plugin that gives Craft templates a consistent way to build social profile and sharing links. Use bundled icons and brand details, generate buttons quickly, and extend the provider catalogue when a project needs something specific.
+
+Generate profile or share buttons for supported providers with their destination, icon, and familiar brand treatment. Helper options provide a quick result while templates can still control the surrounding markup and styling.
 
 ## Features
-- Support for 80+ social media providers.
-- Fetch a count for the number of people following a social media account.
-- Fetch a count for the number of times a URL has been shared on social media.
-- Render social media icon buttons, including social share buttons.
-- Theming options for buttons to save you precious development time. Highly customisable!
-- Make use of bundled SVG icons and brand colours for socials. Stop lugging around icons and CSS from project-to-project.
-- Extendable for you to register your own providers, or extend an existing one.
+
+- Create provider-specific URLs for visitors to share the current page.
+- Link to a social account with recognisable icon treatment.
+- Use provider artwork without carrying a separate icon folder between projects.
+- Start from familiar provider colours and customise the presentation as needed.
+- Retrieve provider-supported follower or URL-share totals.
+- Register another service behind the same template-facing API.
 
 ## Documentation
 Visit the [Social Share Plugin page](https://verbb.io/craft-plugins/social-share) for all documentation, guides, pricing and developer resources.
