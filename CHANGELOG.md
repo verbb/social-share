@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.0.12 - 2026-09-30
 
 ### Changed
 - Mailchimp and Envato follower counts now require API credentials from the site’s own provider accounts.
