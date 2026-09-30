@@ -7,7 +7,7 @@ Make social buttons easier to build in Craft. Generate profile and sharing links
 
 Use bundled SVG icons and brand colours without carrying the same assets and CSS from project to project. Social Share covers a broad provider catalogue while keeping the surrounding markup and styling in your templates.
 
-![A grid of social provider icons in their recognisable brand colours.](../screenshots/output/feature-tour/social-share-buttons.png)
+![A grid of social provider icons in their recognisable brand colours.](../screenshots/social-share-buttons.png)
 <!-- feature-section-end -->
 
 <!-- feature-grid -->
@@ -21,5 +21,5 @@ Use bundled SVG icons and brand colours without carrying the same assets and CSS
 
 Create polished social buttons without coding each treatment from scratch. Generator helpers combine provider destinations, icons, labels, shapes and familiar brand colours, with options to tailor the result to the design.
 
-![Social buttons rendered with several icon, label, shape and colour treatments.](../screenshots/output/feature-tour/social-share-generator.png)
+![Social buttons rendered with several icon, label, shape and colour treatments.](../screenshots/social-share-generator.png)
 <!-- feature-section-end -->
