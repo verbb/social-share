@@ -35,4 +35,3 @@ class Settings extends Model
     }
 
 }
-

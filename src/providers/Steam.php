@@ -37,7 +37,7 @@ class Steam extends Provider
             $response = $client->get("https://steamcommunity.com/groups/$account/memberslistxml?xml=1");
 
             $response = new SimpleXmlElement((string)$response->getBody());
-            
+
             return (int)$response->groupDetails->memberCount;
         } catch (Throwable $e) {
             ProviderLog::apiError($this, $e);

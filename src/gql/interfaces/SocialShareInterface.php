@@ -37,7 +37,7 @@ class SocialShareInterface extends BaseInterfaceType
             'name' => static::getName(),
             'fields' => self::class . '::getFieldDefinitions',
             'description' => 'This is the interface implemented by Social Share.',
-            'resolveType' => function ($value) {
+            'resolveType' => function($value) {
                 return GqlEntityRegistry::getEntity(SocialShareGenerator::getName());
             },
         ]));

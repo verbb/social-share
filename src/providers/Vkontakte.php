@@ -56,11 +56,11 @@ class Vkontakte extends Provider
             // Convert from 13K, 24.4M, etc
             if (str_contains($value, 'K')) {
                 $value = str_replace('K', '', $value) * 1000;
-            } else if (str_contains($value, 'M')) {
+            } elseif (str_contains($value, 'M')) {
                 $value = str_replace('M', '', $value) * 1000000;
-            } else if (str_contains($value, 'B')) {
+            } elseif (str_contains($value, 'B')) {
                 $value = str_replace('B', '', $value) * 1000000000;
-            } else if (str_contains($value, 'T')) {
+            } elseif (str_contains($value, 'T')) {
                 $value = str_replace('T', '', $value) * 1000000000000;
             }
 

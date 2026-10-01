@@ -128,13 +128,13 @@ class SocialShare extends Plugin
 
         Event::on(Gql::class, Gql::EVENT_REGISTER_GQL_QUERIES, function(RegisterGqlQueriesEvent $event) {
             $queries = SocialShareQuery::getQueries();
-                    
+
             foreach ($queries as $key => $value) {
                 $event->queries[$key] = $value;
             }
         });
 
-        Event::on(Gql::class, Gql::EVENT_REGISTER_GQL_SCHEMA_COMPONENTS, function (RegisterGqlSchemaComponentsEvent $event) {  
+        Event::on(Gql::class, Gql::EVENT_REGISTER_GQL_SCHEMA_COMPONENTS, function(RegisterGqlSchemaComponentsEvent $event) {
             $label = Craft::t('social-share', 'Social Share');
 
             $event->queries[$label]['socialShare.all:read'] = ['label' => Craft::t('social-share', 'Query Social Share')];

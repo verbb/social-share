@@ -30,7 +30,7 @@ class Pinterest extends Provider
         return true;
     }
 
-    
+
     // Properties
     // =========================================================================
 

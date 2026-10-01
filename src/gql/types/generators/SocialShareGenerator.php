@@ -20,7 +20,7 @@ class SocialShareGenerator implements GeneratorInterface
         $typeName = self::getName();
         $socialShareFields = SocialShareInterface::getFieldDefinitions();
         $socialShareArgs = SocialShareArguments::getArguments();
-        
+
         $gqlTypes[$typeName] = GqlEntityRegistry::getEntity($typeName) ?: GqlEntityRegistry::createEntity($typeName, new SocialShareType([
             'name' => $typeName,
             'args' => function() use ($socialShareArgs) {

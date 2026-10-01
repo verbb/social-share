@@ -30,7 +30,7 @@ class ButtonInterface extends BaseInterfaceType
             'name' => static::getName(),
             'fields' => self::class . '::getFieldDefinitions',
             'description' => 'This is the interface implemented by all buttons.',
-            'resolveType' => function ($value) {
+            'resolveType' => function($value) {
                 return GqlEntityRegistry::getEntity(ButtonGenerator::getName());
             },
         ]));

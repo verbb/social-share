@@ -81,7 +81,7 @@ class AuthController extends Controller
         }
 
         $oauth->claimAuthorizedCallback('social-share', fn(User $user): bool => $user->admin);
-        
+
         // Get both the origin (failure) and redirect (success) URLs
         $origin = Session::get('origin');
         $redirect = Session::get('redirect');
