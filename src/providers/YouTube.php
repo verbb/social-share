@@ -2,9 +2,8 @@
 namespace verbb\socialshare\providers;
 
 use verbb\socialshare\base\Provider;
+use verbb\socialshare\helpers\ProviderHttp;
 use verbb\socialshare\helpers\ProviderLog;
-
-use Craft;
 
 use Throwable;
 
@@ -30,7 +29,7 @@ class YouTube extends Provider
     public function getFollowersCount(string $account): ?int
     {
         try {
-            $client = Craft::createGuzzleClient();
+            $client = ProviderHttp::createClient();
 
             $url = "https://www.youtube.com/{$account}";
 

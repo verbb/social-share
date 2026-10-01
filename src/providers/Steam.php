@@ -2,9 +2,8 @@
 namespace verbb\socialshare\providers;
 
 use verbb\socialshare\base\Provider;
+use verbb\socialshare\helpers\ProviderHttp;
 use verbb\socialshare\helpers\ProviderLog;
-
-use Craft;
 
 use SimpleXmlElement;
 use Throwable;
@@ -32,7 +31,7 @@ class Steam extends Provider
     public function getFollowersCount(string $account): ?int
     {
         try {
-            $client = Craft::createGuzzleClient();
+            $client = ProviderHttp::createClient();
 
             $response = $client->get("https://steamcommunity.com/groups/$account/memberslistxml?xml=1");
 

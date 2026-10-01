@@ -2,9 +2,9 @@
 namespace verbb\socialshare\providers;
 
 use verbb\socialshare\base\Provider;
+use verbb\socialshare\helpers\ProviderHttp;
 use verbb\socialshare\helpers\ProviderLog;
 
-use Craft;
 use craft\helpers\Json;
 use craft\helpers\UrlHelper;
 
@@ -49,7 +49,7 @@ class Yummly extends Provider
     public function getSharesCount(string $url): ?int
     {
         try {
-            $client = Craft::createGuzzleClient();
+            $client = ProviderHttp::createClient();
 
             $response = $client->get('https://www.yummly.com/services/yum-count', [
                 'query' => [

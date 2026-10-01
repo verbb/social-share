@@ -2,9 +2,9 @@
 namespace verbb\socialshare\providers;
 
 use verbb\socialshare\base\Provider;
+use verbb\socialshare\helpers\ProviderHttp;
 use verbb\socialshare\helpers\ProviderLog;
 
-use Craft;
 use craft\helpers\Json;
 use craft\helpers\UrlHelper;
 
@@ -51,7 +51,7 @@ class Pinterest extends Provider
     public function getFollowersCount(string $account): ?int
     {
         try {
-            $client = Craft::createGuzzleClient();
+            $client = ProviderHttp::createClient();
 
             $response = $client->get("https://www.pinterest.com/{$account}");
             $html = (string)$response->getBody();
@@ -72,7 +72,7 @@ class Pinterest extends Provider
     public function getSharesCount(string $url): ?int
     {
         try {
-            $client = Craft::createGuzzleClient();
+            $client = ProviderHttp::createClient();
 
             $response = $client->get('https://widgets.pinterest.com/v1/urls/count.json', [
                 'query' => [

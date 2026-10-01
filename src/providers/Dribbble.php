@@ -2,12 +2,14 @@
 namespace verbb\socialshare\providers;
 
 use verbb\socialshare\base\OAuthProvider;
+use verbb\socialshare\helpers\ProviderHttp;
 use verbb\socialshare\helpers\ProviderLog;
 
 use Craft;
 
 use Throwable;
 
+use GuzzleHttp\Client;
 use verbb\auth\providers\Dribbble as DribbbleProvider;
 
 class Dribbble extends OAuthProvider
@@ -45,6 +47,11 @@ class Dribbble extends OAuthProvider
         return Craft::$app->getView()->renderTemplate('social-share/providers/dribbble', [
             'provider' => $this,
         ]);
+    }
+
+    public function getClient(): Client
+    {
+        return ProviderHttp::withTimeouts(parent::getClient());
     }
 
     public function getFollowersCount(string $account): ?int

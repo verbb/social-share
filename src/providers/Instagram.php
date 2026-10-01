@@ -2,12 +2,14 @@
 namespace verbb\socialshare\providers;
 
 use verbb\socialshare\base\OAuthProvider;
+use verbb\socialshare\helpers\ProviderHttp;
 use verbb\socialshare\helpers\ProviderLog;
 
 use Craft;
 
 use Throwable;
 
+use GuzzleHttp\Client;
 use verbb\auth\providers\Facebook as InstagramProvider;
 
 class Instagram extends OAuthProvider
@@ -64,6 +66,11 @@ class Instagram extends OAuthProvider
         return Craft::$app->getView()->renderTemplate('social-share/providers/instagram', [
             'provider' => $this,
         ]);
+    }
+
+    public function getClient(): Client
+    {
+        return ProviderHttp::withTimeouts(parent::getClient());
     }
 
     public function getFollowersCount(string $account): ?int

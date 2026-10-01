@@ -2,9 +2,9 @@
 namespace verbb\socialshare\providers;
 
 use verbb\socialshare\base\Provider;
+use verbb\socialshare\helpers\ProviderHttp;
 use verbb\socialshare\helpers\ProviderLog;
 
-use Craft;
 use craft\helpers\App;
 use craft\helpers\Json;
 use craft\helpers\UrlHelper;
@@ -80,7 +80,7 @@ class Facebook extends Provider
     public function getFollowersCount(string $account): ?int
     {
         try {
-            $client = Craft::createGuzzleClient();
+            $client = ProviderHttp::createClient();
 
             $response = $client->request('GET', 'https://www.facebook.com/plugins/likebox.php', [
                 'query' => [
@@ -122,7 +122,7 @@ class Facebook extends Provider
     public function getSharesCount(string $url): ?int
     {
         try {
-            $client = Craft::createGuzzleClient();
+            $client = ProviderHttp::createClient();
 
             $accessTokenResponse = $client->request('GET', 'https://graph.facebook.com/oauth/access_token', [
                 'query' => [

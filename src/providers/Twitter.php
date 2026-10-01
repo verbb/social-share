@@ -2,9 +2,9 @@
 namespace verbb\socialshare\providers;
 
 use verbb\socialshare\base\Provider;
+use verbb\socialshare\helpers\ProviderHttp;
 use verbb\socialshare\helpers\ProviderLog;
 
-use Craft;
 use craft\helpers\App;
 use craft\helpers\Json;
 use craft\helpers\UrlHelper;
@@ -76,7 +76,7 @@ class Twitter extends Provider
     public function getFollowersCount(string $account): ?int
     {
         try {
-            $client = Craft::createGuzzleClient();
+            $client = ProviderHttp::createClient();
 
             $accessTokenResponse = $client->request('POST', 'https://api.twitter.com/oauth2/token', [
                 'form_params' => [

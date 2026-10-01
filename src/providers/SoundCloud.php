@@ -2,9 +2,8 @@
 namespace verbb\socialshare\providers;
 
 use verbb\socialshare\base\Provider;
+use verbb\socialshare\helpers\ProviderHttp;
 use verbb\socialshare\helpers\ProviderLog;
-
-use Craft;
 
 use Throwable;
 
@@ -31,7 +30,7 @@ class SoundCloud extends Provider
     public function getFollowersCount(string $account): ?int
     {
         try {
-            $client = Craft::createGuzzleClient();
+            $client = ProviderHttp::createClient();
 
             $response = $client->get("https://soundcloud.com/$account");
             $html = (string)$response->getBody();

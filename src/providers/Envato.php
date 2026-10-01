@@ -2,9 +2,9 @@
 namespace verbb\socialshare\providers;
 
 use verbb\socialshare\base\Provider;
+use verbb\socialshare\helpers\ProviderHttp;
 use verbb\socialshare\helpers\ProviderLog;
 
-use Craft;
 use craft\helpers\App;
 use craft\helpers\Json;
 
@@ -64,7 +64,7 @@ class Envato extends Provider
         }
 
         try {
-            $client = Craft::createGuzzleClient();
+            $client = ProviderHttp::createClient();
 
             $response = $client->get("https://api.envato.com/v1/market/user:$account.json", [
                 'headers' => [
