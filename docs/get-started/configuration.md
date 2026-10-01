@@ -132,8 +132,8 @@ return [
         // ...
         'providers' => [
             'facebook' => [
-                'appId' => '••••••••••••••••••••••••••••',
-                'appSecret' => '••••••••••••••••••••••••••••',
+                'clientId' => '$SOCIAL_SHARE_FACEBOOK_CLIENT_ID',
+                'clientSecret' => '$SOCIAL_SHARE_FACEBOOK_CLIENT_SECRET',
             ],
         ],
     ],

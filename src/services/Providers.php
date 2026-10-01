@@ -12,6 +12,7 @@ use craft\errors\MissingComponentException;
 use craft\events\RegisterComponentTypesEvent;
 use craft\helpers\Component as ComponentHelper;
 use craft\helpers\ProjectConfig as ProjectConfigHelper;
+use craft\services\ProjectConfig;
 
 class Providers extends Component
 {
@@ -234,18 +235,66 @@ class Providers extends Component
         return ProjectConfigHelper::packAssociativeArrays($settings);
     }
 
-    public function saveProvider(ProviderInterface $provider): bool
+    public function saveProvider(ProviderInterface $provider, ?array $submittedSettings = null): bool
     {
+        $config = Craft::$app->getConfig()->getConfigFromFile('social-share');
+        $configProviders = is_array($config) && is_array($config['providers'] ?? null) ? $config['providers'] : [];
+        $configProviderSettings = $configProviders[$provider->getHandle()] ?? [];
+
+        if (!is_array($configProviderSettings)) {
+            $configProviderSettings = [];
+        }
+
+        $allowedSettings = array_flip($provider->settingsAttributes());
+
+        if ($submittedSettings !== null) {
+            // Config-file values are runtime overrides and must never be copied into project config.
+            $submittedSettings = array_intersect_key($submittedSettings, $allowedSettings);
+            $submittedSettings = array_diff_key($submittedSettings, $configProviderSettings);
+            $provider->setAttributes($submittedSettings, false);
+            $settingNames = array_keys($submittedSettings);
+        } else {
+            $settingNames = array_diff($provider->settingsAttributes(), array_keys($configProviderSettings));
+        }
+
         if (!$provider->validate()) {
             return false;
         }
 
-        $settings = SocialShare::$plugin->getSettings();
-        $settings->providers[$provider->handle] = $this->createProviderConfig($provider);
+        $providerSettings = array_intersect_key($provider->getSettings(), array_flip($settingNames));
+
+        if ($providerSettings === []) {
+            return true;
+        }
+
+        // Merge into the raw stored settings so unrelated values and environment references survive.
+        $settingsPath = ProjectConfig::PATH_PLUGINS . '.social-share.settings';
+        $settings = Craft::$app->getProjectConfig()->get($settingsPath) ?? [];
+
+        if (!is_array($settings)) {
+            $settings = [];
+        }
+
+        $settings = ProjectConfigHelper::unpackAssociativeArrays($settings);
+        $providers = $settings['providers'] ?? [];
+
+        if (!is_array($providers)) {
+            $providers = [];
+        }
+
+        $providerHandle = $provider->getHandle();
+        $storedProviderSettings = $providers[$providerHandle] ?? [];
+
+        if (!is_array($storedProviderSettings)) {
+            $storedProviderSettings = [];
+        }
+
+        $providers[$providerHandle] = array_replace($storedProviderSettings, $providerSettings);
+        $settings['providers'] = $providers;
 
         $plugin = Craft::$app->getPlugins()->getPlugin('social-share');
 
-        return Craft::$app->getPlugins()->savePluginSettings($plugin, $settings->toArray());
+        return Craft::$app->getPlugins()->savePluginSettings($plugin, $settings);
     }
 
 

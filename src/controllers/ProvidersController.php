@@ -74,9 +74,8 @@ class ProvidersController extends Controller
 
         // A provider's settings contract is also the persistence allowlist for custom providers.
         $settings = array_intersect_key($settings, array_flip($provider->settingsAttributes()));
-        $provider->setAttributes($settings, false);
 
-        if (!SocialShare::$plugin->getProviders()->saveProvider($provider)) {
+        if (!SocialShare::$plugin->getProviders()->saveProvider($provider, $settings)) {
             Craft::$app->getSession()->setError(Craft::t('social-share', 'Couldn’t save provider.'));
 
             Craft::$app->getUrlManager()->setRouteParams([
