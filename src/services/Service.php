@@ -47,13 +47,19 @@ class Service extends Component
 
         // Should we be caching?
         if ($enableCache) {
-            if (($cache = Craft::$app->getCache()->get($cacheKey))) {
+            $cache = Craft::$app->getCache()->get($cacheKey);
+
+            if ($cache !== false) {
                 if ($friendlyCount) {
                     return $this->_formatNumber($cache);
                 }
 
                 return $cache;
             }
+        }
+
+        if (($options['requestSource'] ?? null) === self::REQUEST_SOURCE_GRAPHQL && !$this->_consumeGraphqlProviderRequestBudget($provider->getHandle())) {
+            return null;
         }
 
         // Cache not enabled or value not cached, so fetch the value
@@ -197,7 +203,11 @@ class Service extends Component
             // Record the attempt before the outbound request so provider failures still consume the budget.
             $entry['count'] = $count + 1;
 
-            return $cache->set($cacheKey, $entry, max(1, $resetAt - $now));
+            if (!$cache->set($cacheKey, $entry, max(1, $resetAt - $now))) {
+                return false;
+            }
+
+            return $cache->get($cacheKey) === $entry;
         } finally {
             $mutex?->release($mutexKey);
         }

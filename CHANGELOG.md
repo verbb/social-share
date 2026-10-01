@@ -3,7 +3,7 @@
 ## Unreleased
 
 ### Fixed
-- Fixed a moderate-severity resource consumption vulnerability.
+- Fixed moderate-severity resource consumption vulnerabilities.
 
 ## 2.0.12 - 2026-09-30
 
