@@ -123,7 +123,7 @@ class Service extends Component
             Craft::$app->getCache()->set($cacheKey, $count, $cacheDuration);
         }
 
-        if ($settings->minShareCount && $cache < $settings->minShareCount) {
+        if ($settings->minShareCount && $count < $settings->minShareCount) {
             return null;
         }
 
