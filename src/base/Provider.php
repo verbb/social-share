@@ -103,7 +103,7 @@ abstract class Provider extends SavableComponent implements ProviderInterface
 
     public function getCpEditUrl(): ?string
     {
-        return UrlHelper::cpUrl('social-share/providers/' . static::$handle);
+        return UrlHelper::cpUrl('social-share/settings/providers/edit/' . static::$handle);
     }
 
     public function getShareUrl(string $url, ?string $text = null, array $params = []): ?string

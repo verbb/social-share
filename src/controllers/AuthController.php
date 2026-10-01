@@ -50,13 +50,8 @@ class AuthController extends Controller
 
             $context = [
                 'providerHandle' => $providerHandle,
+                'redirect' => $provider->getCpEditUrl(),
             ];
-
-            if ($this->request->getIsCpRequest()) {
-                if ($redirect = $this->request->getValidatedBodyParam('redirect')) {
-                    $context['redirect'] = $this->getView()->renderObjectTemplate($redirect, $provider);
-                }
-            }
 
             return Auth::getInstance()->getOAuth()->connect('social-share', $provider, $provider->handle, $context);
         } catch (Throwable $e) {

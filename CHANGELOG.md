@@ -3,6 +3,7 @@
 ## Unreleased
 
 ### Fixed
+- Fixed the post-connect redirect for OAuth providers.
 - Fixed minimum share counts hiding freshly fetched counts.
 - Fixed moderate-severity resource consumption vulnerabilities.
 - Fixed social count requests potentially waiting indefinitely for third-party providers.
