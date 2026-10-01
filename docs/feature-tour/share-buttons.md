@@ -93,6 +93,8 @@ To render a share button, all you'll need is to pick which provider you want to 
 
 This will produce a Facebook icon, which when clicked, will open a new popup window with a share prompt dialog for the user to continue.
 
+When the `url` option is omitted, Social Share uses the matched element's canonical URL, or the current site's configured base URL and request path for routes that are not elements. Request query parameters and Craft preview tokens are not included. Sites without an absolute configured base URL should always pass `url` explicitly.
+
 ### Render Options
 You can also pass in options to control rendering. Read further on [Rendering Buttons](docs:template-guides/rendering-buttons).
 
