@@ -2,6 +2,7 @@
 namespace verbb\socialshare\gql\resolvers;
 
 use verbb\socialshare\SocialShare;
+use verbb\socialshare\services\Service;
 
 use craft\gql\base\Resolver;
 
@@ -24,7 +25,9 @@ class SharesResolver extends Resolver
             throw new Exception('You must provide a `url` argument to query `shares`.');
         }
 
-        $options = [];
+        $options = [
+            'requestSource' => Service::REQUEST_SOURCE_GRAPHQL,
+        ];
 
         if (array_key_exists('friendlyCount', $arguments)) {
             $options['friendlyCount'] = $arguments['friendlyCount'];

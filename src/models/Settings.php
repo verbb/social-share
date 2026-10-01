@@ -12,6 +12,8 @@ class Settings extends Model
     public bool $hasCpSection = false;
     public bool $enableCache = true;
     public mixed $cacheDuration = 86400; // 1 day
+    public int $graphqlProviderRequestLimit = 60;
+    public int $graphqlProviderRequestWindow = 60;
     public bool $friendlyCount = true;
     public ?int $minShareCount = null;
     public bool $useModalForShare = true;
@@ -30,6 +32,7 @@ class Settings extends Model
         $rules[] = [['pluginName'], 'trim'];
         $rules[] = [['pluginName'], 'required'];
         $rules[] = [['pluginName'], 'string', 'max' => 52];
+        $rules[] = [['graphqlProviderRequestLimit', 'graphqlProviderRequestWindow'], 'integer', 'min' => 1];
 
         return $rules;
     }

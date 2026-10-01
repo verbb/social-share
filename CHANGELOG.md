@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+- Fixed a moderate-severity resource consumption vulnerability.
+
 ## 2.0.12 - 2026-09-30
 
 ### Changed

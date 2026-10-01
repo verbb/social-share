@@ -33,6 +33,24 @@ The number of seconds to cache. Default to 1 day.
 :::
 
 ::: reference
+### `graphqlProviderRequestLimit`
+
+**Type:** `int` · **Default:** `60`
+
+The maximum number of outbound share-count lookups that GraphQL can trigger for each provider during the configured request window. One lookup can involve more than one HTTP request when required by the provider. Cached GraphQL responses and requests made from Twig do not consume this budget.
+
+The budget uses Craft’s configured cache and mutex components. Multi-node deployments must configure both components with a coherent shared backend to enforce one site-wide budget; node-local components enforce the limit independently on each node.
+:::
+
+::: reference
+### `graphqlProviderRequestWindow`
+
+**Type:** `int` · **Default:** `60`
+
+The number of seconds in each GraphQL provider request window.
+:::
+
+::: reference
 ### `friendlyCount`
 
 **Type:** `bool` · **Default:** `true`

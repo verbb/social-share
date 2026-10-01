@@ -14,6 +14,14 @@ use Twig\Markup;
 
 class Service extends Component
 {
+    // Constants
+    // =========================================================================
+
+    public const REQUEST_SOURCE_GRAPHQL = 'graphql';
+
+    private const GRAPHQL_PROVIDER_REQUEST_CACHE_PREFIX = 'social-share.graphql-provider-request.';
+    private const GRAPHQL_PROVIDER_REQUEST_MUTEX_PREFIX = 'social-share.graphql-provider-request-lock.';
+
     // Public Methods
     // =========================================================================
 
@@ -82,7 +90,9 @@ class Service extends Component
 
         // Should we be caching?
         if ($enableCache) {
-            if (($cache = Craft::$app->getCache()->get($cacheKey))) {
+            $cache = Craft::$app->getCache()->get($cacheKey);
+
+            if ($cache !== false) {
                 if ($settings->minShareCount && $cache < $settings->minShareCount) {
                     return null;
                 }
@@ -93,6 +103,10 @@ class Service extends Component
 
                 return $cache;
             }
+        }
+
+        if (($options['requestSource'] ?? null) === self::REQUEST_SOURCE_GRAPHQL && !$this->_consumeGraphqlProviderRequestBudget($provider->getHandle())) {
+            return null;
         }
 
         // Cache not enabled or value not cached, so fetch the value
@@ -145,6 +159,49 @@ class Service extends Component
 
     // Private Methods
     // =========================================================================
+
+    private function _consumeGraphqlProviderRequestBudget(string $providerHandle): bool
+    {
+        $settings = SocialShare::$plugin->getSettings();
+        $limit = max(1, $settings->graphqlProviderRequestLimit);
+        $window = max(1, $settings->graphqlProviderRequestWindow);
+        $keyHash = md5($providerHandle);
+        $cacheKey = self::GRAPHQL_PROVIDER_REQUEST_CACHE_PREFIX . $keyHash;
+        $mutexKey = self::GRAPHQL_PROVIDER_REQUEST_MUTEX_PREFIX . $keyHash;
+        $cache = Craft::$app->getCache();
+        $mutex = Craft::$app->getMutex();
+        $now = time();
+        $lockAcquired = $mutex?->acquire($mutexKey, 3) ?? false;
+
+        if (!$lockAcquired) {
+            return false;
+        }
+
+        try {
+            $entry = $cache->get($cacheKey);
+
+            if (!is_array($entry) || !isset($entry['count'], $entry['resetAt']) || (int)$entry['resetAt'] <= $now) {
+                $entry = [
+                    'count' => 0,
+                    'resetAt' => $now + $window,
+                ];
+            }
+
+            $count = (int)$entry['count'];
+            $resetAt = max($now + 1, (int)$entry['resetAt']);
+
+            if ($count >= $limit) {
+                return false;
+            }
+
+            // Record the attempt before the outbound request so provider failures still consume the budget.
+            $entry['count'] = $count + 1;
+
+            return $cache->set($cacheKey, $entry, max(1, $resetAt - $now));
+        } finally {
+            $mutex?->release($mutexKey);
+        }
+    }
 
     private function _formatNumber(?int $number): ?string
     {
