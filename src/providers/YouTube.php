@@ -43,6 +43,10 @@ class YouTube extends Provider
             preg_match('/subscriberCountText.*"simpleText":"(.*) subscribers"/m', $html, $matches);
             $value = $matches[1] ?? null;
 
+            if ($value === null) {
+                return null;
+            }
+
             // Convert from 13K, 24.4M, etc
             if (str_contains($value, 'K')) {
                 $value = str_replace('K', '', $value) * 1000;

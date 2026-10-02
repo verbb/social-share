@@ -51,6 +51,11 @@ class Vkontakte extends Provider
 
             preg_match('/slim_header">(.*) followers/s', $html, $matches);
             $value = $matches[1] ?? null;
+
+            if ($value === null) {
+                return null;
+            }
+
             $value = str_replace(',', '', $value);
 
             // Convert from 13K, 24.4M, etc

@@ -7,6 +7,7 @@
 - Replaced the CodeKit stylesheet build with Vite and moved web assets to `src/web`.
 
 ### Fixed
+- Fixed failed count scrapes emitting PHP deprecation warnings and normalized cache duration values.
 - Fixed incorrect follower-count and OAuth provider documentation.
 - Stopped unsupported Reddit, Spotify and Yummly count requests from triggering outbound calls.
 - Fixed the post-connect redirect for OAuth providers.

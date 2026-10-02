@@ -9,6 +9,7 @@ use verbb\socialshare\providers\Mailchimp;
 
 use Craft;
 use craft\base\Component;
+use craft\helpers\ConfigHelper;
 
 use Twig\Markup;
 
@@ -67,7 +68,7 @@ class Service extends Component
 
         // Then, maybe save to cache
         if ($enableCache) {
-            Craft::$app->getCache()->set($cacheKey, $count, $cacheDuration);
+            Craft::$app->getCache()->set($cacheKey, $count, ConfigHelper::durationInSeconds($cacheDuration));
         }
 
         if ($friendlyCount) {
@@ -120,7 +121,7 @@ class Service extends Component
 
         // Then, maybe save to cache
         if ($enableCache) {
-            Craft::$app->getCache()->set($cacheKey, $count, $cacheDuration);
+            Craft::$app->getCache()->set($cacheKey, $count, ConfigHelper::durationInSeconds($cacheDuration));
         }
 
         if ($settings->minShareCount && $count < $settings->minShareCount) {

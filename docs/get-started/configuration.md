@@ -27,9 +27,9 @@ Whether share and follower counts should be cached. Only disable this for local 
 ::: reference
 ### `cacheDuration`
 
-**Type:** `mixed` · **Default:** `86400`
+**Type:** `int|string|DateInterval|null` · **Default:** `86400`
 
-The number of seconds to cache. Default to 1 day.
+The cache duration as a number of seconds, an ISO 8601 duration string or a `DateInterval` object. Set this to `0` or `null` to cache indefinitely. Defaults to one day.
 :::
 
 ::: reference
@@ -139,4 +139,3 @@ return [
     ],
 ];
 ```
-
