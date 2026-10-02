@@ -2,8 +2,9 @@
 namespace verbb\socialshare\providers;
 
 use verbb\socialshare\base\Provider;
+use verbb\socialshare\web\assets\frontend\ShareButtonAsset;
 
-use craft\helpers\UrlHelper;
+use Craft;
 
 class PrintProvider extends Provider
 {
@@ -27,8 +28,16 @@ class PrintProvider extends Provider
 
     public function getButtonAttributes(array $attributes): array
     {
-        // Override the modal behaviour
-        $attributes['onclick'] = 'window.print();';
+        Craft::$app->getView()->registerAssetBundle(ShareButtonAsset::class);
+        unset(
+            $attributes['data-social-share-popup'],
+            $attributes['data-url'],
+            $attributes['target'],
+            $attributes['rel'],
+        );
+
+        $attributes['href'] = '#';
+        $attributes['data-social-share-print'] = true;
 
         return $attributes;
     }

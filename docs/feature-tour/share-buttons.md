@@ -79,7 +79,7 @@ To render a share button, all you'll need is to pick which provider you want to 
 {{ craft.socialShare.renderShareButton('facebook') }}
 
 {# Which renders... #}
-<a href="javascript:void();" aria-label="Facebook" onclick="window.open(this.dataset.url, &quot;ss_share_dialog&quot;, &quot;width=626,height=436&quot;);" data-url="https://www.facebook.com/sharer/sharer.php?u=https%3A//my-site.test/my-url" style="--brand-color: #3b5997;">
+<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//my-site.test/my-url" target="_blank" rel="nofollow noopener noreferrer" aria-label="Facebook" data-social-share-popup data-url="https://www.facebook.com/sharer/sharer.php?u=https%3A//my-site.test/my-url" style="--brand-color: #3b5997;">
     <span>
         <span>
             <svg ...>
@@ -91,7 +91,7 @@ To render a share button, all you'll need is to pick which provider you want to 
 </a>
 ```
 
-This will produce a Facebook icon, which when clicked, will open a new popup window with a share prompt dialog for the user to continue.
+This produces a Facebook icon that opens the provider’s share prompt in a popup window. The popup behaviour comes from Social Share’s bundled external script, so it works with a strict Content Security Policy that allows the site’s own assets. The link retains the real provider URL and opens in a new tab when JavaScript is unavailable or a popup cannot be created.
 
 When the `url` option is omitted, Social Share uses the matched element's canonical URL, or the current site's configured base URL and request path for routes that are not elements. Request query parameters and Craft preview tokens are not included. Sites without an absolute configured base URL should always pass `url` explicitly.
 
@@ -135,24 +135,21 @@ Here's an example of us doing just that!
 
 {{ tag('a', {
     html: button.icon,
-    href: 'javascript:void();',
-    onclick: 'window.open(this.dataset.url, "ss_share_dialog", "width=626,height=436");',
+    href: button.providerUrl,
+    target: '_blank',
+    rel: 'nofollow noopener noreferrer',
     class: ['social-btn', button.handle],
     title: button.name,
-    data: {
-        url: button.providerUrl,
-    },
     style: {
         color: button.primaryColor,
     },
 }) }}
 
 {# Would render... #}
-<a href="..." onclick="..." data-url="..." class="social-btn facebook" title="Facebook" style="color: #3b5997;"><svg ...</a>
+<a href="..." target="_blank" rel="nofollow noopener noreferrer" class="social-btn facebook" title="Facebook" style="color: #3b5997;"><svg ...</a>
 ```
 
-We're using the `tag()` Twig function because we think it looks a lot cleaner, but you could totally write regular Twig/HTML if you prefer. Also note the use of our `href`, `data-url` and `onclick` attributes, to handle opening in a new popup window.
+We're using the `tag()` Twig function because we think it looks a lot cleaner, but you could write regular Twig or HTML if you prefer. This manual example uses a normal new-tab link. If you add custom popup behaviour, keep the real provider URL in `href` and implement the click handler in an external script rather than an inline `onclick` attribute.
 
 ## Theming
 You can also get Social Share to render the button in an opinionated, hands-off way. Read further on [Rendering Buttons](docs:template-guides/rendering-buttons).
-

@@ -7,6 +7,7 @@
 - Replaced the CodeKit stylesheet build with Vite and moved web assets to `src/web`.
 
 ### Fixed
+- Replaced inline share-button JavaScript with CSP-compatible frontend behavior.
 - Reduced Facebook share-count requests by caching app access tokens.
 - Fixed SMS and email share links encoding spaces incorrectly.
 - Fixed failed count scrapes emitting PHP deprecation warnings and normalized cache duration values.

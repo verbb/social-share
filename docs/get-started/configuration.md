@@ -71,7 +71,7 @@ Set the minimum number of shares that must be met in order to show a value. This
 
 **Type:** `bool` · **Default:** `true`
 
-Whether when clicking on a share button should open a modal window with the provider share URL. Disabling this will open the same link, just in a new tab.
+Whether an ordinary left-click on a rendered share button should open the provider share URL in a popup window. Social Share implements the popup with a bundled external script, while keeping the real provider URL in the link so it still works when JavaScript is unavailable. Modified clicks retain the browser’s normal new-tab or new-window behaviour. Disabling this setting always opens the link in a new tab.
 :::
 
 ::: reference

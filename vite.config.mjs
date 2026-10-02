@@ -9,7 +9,7 @@ const builds = {
     },
     frontend: {
         root: resolve(import.meta.dirname, 'src/web/assets/frontend'),
-        input: 'social-buttons.css',
+        input: ['social-buttons.css', 'share-buttons.js'],
     },
 };
 
@@ -22,7 +22,9 @@ export default defineConfig(({ mode }) => {
 
     return {
         root: currentBuild.root,
-        input: resolve(currentBuild.root, 'src', currentBuild.input),
+        input: Array.isArray(currentBuild.input)
+            ? currentBuild.input.map((input) => resolve(currentBuild.root, 'src', input))
+            : resolve(currentBuild.root, 'src', currentBuild.input),
         build: {
             outDir: resolve(currentBuild.root, 'dist'),
             emptyOutDir: true,
@@ -32,6 +34,7 @@ export default defineConfig(({ mode }) => {
             rolldownOptions: {
                 output: {
                     assetFileNames: '[name][extname]',
+                    entryFileNames: '[name].js',
                 },
             },
         },

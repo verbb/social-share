@@ -2,6 +2,7 @@
 namespace verbb\socialshare\models;
 
 use verbb\socialshare\SocialShare;
+use verbb\socialshare\web\assets\frontend\ShareButtonAsset;
 
 use Craft;
 use craft\helpers\App;
@@ -14,20 +15,20 @@ class ShareButton extends Button
 
     public function getButtonAttributes(): array
     {
+        $providerUrl = $this->getProviderUrl();
         $attributes = [
             'aria-label' => $this->getName(),
+            'href' => $providerUrl,
+            'target' => '_blank',
+            'rel' => 'nofollow noopener noreferrer',
         ];
 
         $settings = SocialShare::$plugin->getSettings();
 
-        if ($settings->useModalForShare) {
-            $attributes['onclick'] = 'window.open(this.dataset.url, "ss_share_dialog", "width=626,height=436");';
-            $attributes['href'] = 'javascript:void(0);';
-            $attributes['data-url'] = $this->getProviderUrl();
-        } else {
-            $attributes['href'] = $this->getProviderUrl();
-            $attributes['target'] = '_blank';
-            $attributes['rel'] = 'nofollow noopener noreferrer';
+        if ($settings->useModalForShare && $providerUrl !== null) {
+            Craft::$app->getView()->registerAssetBundle(ShareButtonAsset::class);
+            $attributes['data-social-share-popup'] = true;
+            $attributes['data-url'] = $providerUrl;
         }
 
         return $this->getProvider()->getButtonAttributes($attributes);
