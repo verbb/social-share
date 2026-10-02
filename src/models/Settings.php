@@ -12,6 +12,9 @@ class Settings extends Model
     public bool $hasCpSection = false;
     public bool $enableCache = true;
     public mixed $cacheDuration = 86400; // 1 day
+    public int $graphqlNegativeCacheDuration = 60;
+    public int $graphqlOperationRequestLimit = 20;
+    public int $graphqlAggregateRequestLimit = 60;
     public int $graphqlProviderRequestLimit = 60;
     public int $graphqlProviderRequestWindow = 60;
     public bool $friendlyCount = true;
@@ -32,7 +35,13 @@ class Settings extends Model
         $rules[] = [['pluginName'], 'trim'];
         $rules[] = [['pluginName'], 'required'];
         $rules[] = [['pluginName'], 'string', 'max' => 52];
-        $rules[] = [['graphqlProviderRequestLimit', 'graphqlProviderRequestWindow'], 'integer', 'min' => 1];
+        $rules[] = [[
+            'graphqlNegativeCacheDuration',
+            'graphqlOperationRequestLimit',
+            'graphqlAggregateRequestLimit',
+            'graphqlProviderRequestLimit',
+            'graphqlProviderRequestWindow',
+        ], 'integer', 'min' => 1];
 
         return $rules;
     }

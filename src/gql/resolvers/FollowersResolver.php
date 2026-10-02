@@ -27,6 +27,7 @@ class FollowersResolver extends Resolver
 
         $options = [
             'requestSource' => Service::REQUEST_SOURCE_GRAPHQL,
+            'graphqlOperation' => $resolveInfo->operation,
         ];
 
         if (array_key_exists('friendlyCount', $arguments)) {

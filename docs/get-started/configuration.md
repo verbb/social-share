@@ -33,6 +33,30 @@ The cache duration as a number of seconds, an ISO 8601 duration string or a `Dat
 :::
 
 ::: reference
+### `graphqlNegativeCacheDuration`
+
+**Type:** `int` · **Default:** `60`
+
+The maximum number of seconds that GraphQL caches a failed, zero or otherwise non-positive share or follower count. A short duration prevents unsuccessful lookups from occupying the count cache for the full `cacheDuration` while still avoiding immediate repeated provider requests.
+:::
+
+::: reference
+### `graphqlOperationRequestLimit`
+
+**Type:** `int` · **Default:** `20`
+
+The maximum number of uncached share- or follower-count lookups one GraphQL operation can trigger. Cached count fields do not consume this budget.
+:::
+
+::: reference
+### `graphqlAggregateRequestLimit`
+
+**Type:** `int` · **Default:** `60`
+
+The maximum number of uncached share- or follower-count lookups that GraphQL can trigger across all providers during the configured request window. This site-wide budget is applied before the existing per-provider budget.
+:::
+
+::: reference
 ### `graphqlProviderRequestLimit`
 
 **Type:** `int` · **Default:** `60`
@@ -47,7 +71,7 @@ The budget uses Craft’s configured cache and mutex components. The cache must 
 
 **Type:** `int` · **Default:** `60`
 
-The number of seconds in each GraphQL provider request window.
+The number of seconds in each GraphQL aggregate and provider request window.
 :::
 
 ::: reference

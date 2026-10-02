@@ -28,7 +28,7 @@ Social Share supports accessing [Share](docs:feature-tour/share-counts) and [Fol
 ### The `shares` Query
 This query is used to query for the [Share](docs:feature-tour/share-counts) count of a provided URL and a provider handle. The `handle` and `url` arguments are required.
 
-GraphQL count queries always use the cache policy configured by the site. The `enableCache` and `cacheDuration` arguments remain available so existing queries continue to validate, but they are ignored and will be removed in the next major version.
+GraphQL count queries always use the cache policy and request budgets configured by the site. URLs longer than 2048 bytes resolve to `null` before Social Share reads or writes the count cache. The `enableCache` and `cacheDuration` arguments remain available so existing queries continue to validate, but they are ignored and will be removed in the next major version.
 
 | Argument | Type | Description
 | - | - | -
@@ -68,7 +68,7 @@ GraphQL count queries always use the cache policy configured by the site. The `e
 ### The `followers` Query
 This query is used to query for the [Follower](docs:feature-tour/follower-counts) count of a provided account identifier and a provider handle. The `handle` and `account` arguments are required.
 
-GraphQL count queries always use the cache policy configured by the site. The `enableCache` and `cacheDuration` arguments remain available so existing queries continue to validate, but they are ignored and will be removed in the next major version.
+GraphQL count queries always use the cache policy and request budgets configured by the site. Account identifiers longer than 255 bytes resolve to `null` before Social Share reads or writes the count cache. The `enableCache` and `cacheDuration` arguments remain available so existing queries continue to validate, but they are ignored and will be removed in the next major version.
 
 | Argument | Type | Description
 | - | - | -

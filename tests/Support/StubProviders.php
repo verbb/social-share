@@ -9,7 +9,7 @@ use verbb\socialshare\services\Providers;
 
 final class StubProviders extends Providers
 {
-    public function __construct(public CountingProvider $provider, array $config = [])
+    public function __construct(public ProviderInterface $provider, array $config = [])
     {
         parent::__construct($config);
     }
