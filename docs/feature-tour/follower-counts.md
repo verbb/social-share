@@ -7,21 +7,20 @@ The following providers support fetching follower counts:
 
 | Provider | Requirements |
 | - | - |
-| Dribbble | Configure and connect the provider under **Settings → Social Share → Providers**. |
+| [Dribbble](docs:providers/dribbble) | Configure and connect the provider under **Settings → Social Share → Providers**. |
 | [Envato](docs:providers/envato) | Configure a personal token. |
 | Facebook | No account configuration is required. |
 | Feedly | No account configuration is required. |
 | GitHub | No account configuration is required. |
-| Instagram | Configure and connect the provider under **Settings → Social Share → Providers**. |
+| [Instagram](docs:providers/instagram) | Configure and connect the provider under **Settings → Social Share → Providers**. |
 | [Mailchimp](docs:providers/mailchimp) | Configure an API key. |
 | MixCloud | No account configuration is required. |
 | Pinterest | No account configuration is required. |
 | SoundCloud | No account configuration is required. |
 | Steam | No account configuration is required. |
 | Vkontakte | No account configuration is required. |
-| X (Twitter) | Configure the provider with your API Key and API Secret. |
-| YouTube Channel | No account configuration is required. |
-| YouTube User | No account configuration is required. |
+| [X (Twitter)](docs:providers/twitter) | Configure the provider with your Client ID and Client Secret. |
+| YouTube | Pass an `@handle` or a channel ID beginning with `UC`. |
 
 Provider credentials are configured under **Settings → Social Share → Providers**. Environment variables keep credential values out of project config.
 
@@ -29,7 +28,7 @@ Provider credentials are configured under **Settings → Social Share → Provid
 You can fetch all providers that support follower counts. This will return a collection of [Provider](docs:developers/provider) objects.
 
 ```twig
-{% for provider in craft.socialShare.getFollowerCountProviders() %}
+{% for provider in craft.socialShare.getFollowersCountProviders() %}
     {{ provider.name }}
 {% endfor %}
 ```
@@ -43,12 +42,13 @@ You'll also want to fetch the counts for the social media platform. You can do s
 
 This should return the total number of followers for `craftcms` (e.g. `2K`).
 
-As each platform is different, you can use the guide below for what value the second parameter needs to be:
+As each platform is different, use the guide below for the value passed as the second parameter:
 
-- Facebook - Page ID, or Username (e.g. `craftcms`)
-- Pinterest - Username (e.g. `craftcms`)
-- YouTube User - Username (e.g. `@craftcms`)
-- YouTube Channel - Channel ID (e.g. `Lofigirl-Chillbeats`)
+- Facebook — page ID or username, such as `craftcms`.
+- Pinterest — username, such as `craftcms`.
+- YouTube — handle, such as `@craftcms`, or channel ID, such as `UC45X_OuS3I2Kq7ILkS5A1uw`.
+
+Dribbble and Instagram return the follower count for the connected account. Their `account` argument is still required for call compatibility, but its value does not select another account.
 
 ### Render Options
 You can pass in a number of options to control output.

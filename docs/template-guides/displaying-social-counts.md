@@ -5,8 +5,7 @@ Request the count for the intended account or URL. The account identifier depend
 ## Calls Used in This Task
 
 ### `craft.socialShare.getFollowers(handle, account, options)`
-Returns a the number of followers for a given provider and identifier (username, ID, etc).
+Returns the number of followers for a given provider and identifier, such as a username or ID.
 
 ### `craft.socialShare.getShares(handle, url, options)`
-Returns a the number of shares for a given provider and url.
-
+Returns the number of shares for a given provider and URL.

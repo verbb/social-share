@@ -22,8 +22,10 @@
         "title": "Providers",
         "collapsable": false,
         "children": [
+            "providers/dribbble",
             "providers/envato",
             "providers/facebook",
+            "providers/instagram",
             "providers/mailchimp",
             "providers/twitter"
         ]
