@@ -39,5 +39,13 @@
         "handle": "social-share",
         "changelogUrl": "https://raw.githubusercontent.com/verbb/social-share/craft-5/CHANGELOG.md",
         "class": "verbb\\socialshare\\SocialShare"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.8"
+    },
+    "scripts": {
+        "test": "ddev test",
+        "test:all": "ddev test --suite=all",
+        "test:perf": "ddev test --suite=performance"
     }
 }
