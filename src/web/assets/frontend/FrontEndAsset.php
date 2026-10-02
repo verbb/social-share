@@ -1,5 +1,5 @@
 <?php
-namespace verbb\socialshare\assetbundles;
+namespace verbb\socialshare\web\assets\frontend;
 
 use craft\web\AssetBundle;
 
@@ -10,10 +10,10 @@ class FrontEndAsset extends AssetBundle
 
     public function init(): void
     {
-        $this->sourcePath = "@verbb/socialshare/resources/dist";
+        $this->sourcePath = '@verbb/socialshare/web/assets/frontend/dist';
 
         $this->css = [
-            'css/social-buttons.css',
+            'social-buttons.css',
         ];
 
         parent::init();

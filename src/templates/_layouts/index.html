@@ -1,6 +1,6 @@
 {% extends parentLayout ?? '_layouts/cp' %}
 
-{% do view.registerAssetBundle('verbb\\socialshare\\assetbundles\\SocialShareAsset') %}
+{% do view.registerAssetBundle('verbb\\socialshare\\web\\assets\\cp\\SocialShareAsset') %}
 
 {% if title is not defined %}
     {% set title = craft.socialShare.getPluginName() | t('social-share') %}

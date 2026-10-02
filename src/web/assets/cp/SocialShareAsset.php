@@ -1,10 +1,10 @@
 <?php
-namespace verbb\socialshare\assetbundles;
+namespace verbb\socialshare\web\assets\cp;
 
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 
-use verbb\base\assetbundles\CpAsset as VerbbCpAsset;
+use verbb\base\web\assets\cp\CpAsset as VerbbCpAsset;
 
 class SocialShareAsset extends AssetBundle
 {
@@ -13,7 +13,7 @@ class SocialShareAsset extends AssetBundle
 
     public function init(): void
     {
-        $this->sourcePath = "@verbb/socialshare/resources/dist";
+        $this->sourcePath = '@verbb/socialshare/web/assets/cp/dist';
 
         $this->depends = [
             VerbbCpAsset::class,
@@ -21,7 +21,7 @@ class SocialShareAsset extends AssetBundle
         ];
 
         $this->css = [
-            'css/social-share.css',
+            'social-share.css',
         ];
 
         parent::init();

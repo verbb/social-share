@@ -1,0 +1,13 @@
+{
+    "name": "social-share",
+    "private": true,
+    "scripts": {
+        "build": "npm run build:cp && npm run build:frontend",
+        "build:cp": "vite build --mode cp",
+        "build:frontend": "vite build --mode frontend"
+    },
+    "devDependencies": {
+        "esbuild": "^0.28.2",
+        "vite": "^8.2.0"
+    }
+}

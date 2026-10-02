@@ -2,8 +2,8 @@
 namespace verbb\socialshare\models;
 
 use verbb\socialshare\SocialShare;
-use verbb\socialshare\assetbundles\FrontEndAsset;
 use verbb\socialshare\base\Provider;
+use verbb\socialshare\web\assets\frontend\FrontEndAsset;
 
 use Craft;
 use craft\base\Model;
