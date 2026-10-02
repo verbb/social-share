@@ -19,6 +19,7 @@
 - Fixed the post-connect redirect for OAuth providers.
 - Fixed minimum share counts hiding freshly fetched counts.
 - Fixed multiple moderate-severity resource consumption vulnerabilities.
+- Fixed a low-severity resource consumption vulnerability.
 - Fixed social count requests potentially waiting indefinitely for third-party providers.
 - Fixed a low-severity share URL generation vulnerability.
 - Fixed a low-severity sensitive information exposure vulnerability.
