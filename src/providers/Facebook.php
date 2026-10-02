@@ -5,10 +5,12 @@ use verbb\socialshare\base\Provider;
 use verbb\socialshare\helpers\ProviderHttp;
 use verbb\socialshare\helpers\ProviderLog;
 
+use Craft;
 use craft\helpers\App;
 use craft\helpers\Json;
 use craft\helpers\UrlHelper;
 
+use RuntimeException;
 use Throwable;
 
 class Facebook extends Provider
@@ -35,6 +37,12 @@ class Facebook extends Provider
     {
         return true;
     }
+
+
+    // Constants
+    // =========================================================================
+
+    private const APP_ACCESS_TOKEN_CACHE_DURATION = 3600;
 
 
     // Properties
@@ -131,17 +139,29 @@ class Facebook extends Provider
 
         try {
             $client = ProviderHttp::createClient();
+            $clientId = $this->getClientId();
+            $clientSecret = $this->getClientSecret();
+            $accessTokenCacheKey = [
+                'social-share.facebook-app-token',
+                hash('sha256', $clientId . "\0" . $clientSecret),
+            ];
+            $accessToken = Craft::$app->getCache()->getOrSet($accessTokenCacheKey, function() use ($client, $clientId, $clientSecret): string {
+                $response = $client->request('GET', 'https://graph.facebook.com/oauth/access_token', [
+                    'query' => [
+                        'client_id' => $clientId,
+                        'client_secret' => $clientSecret,
+                        'grant_type' => 'client_credentials',
+                    ],
+                ]);
+                $response = Json::decode((string)$response->getBody());
+                $accessToken = $response['access_token'] ?? null;
 
-            $accessTokenResponse = $client->request('GET', 'https://graph.facebook.com/oauth/access_token', [
-                'query' => [
-                    'client_id' => $this->getClientId(),
-                    'client_secret' => $this->getClientSecret(),
-                    'grant_type' => 'client_credentials',
-                ],
-            ]);
+                if (!is_string($accessToken) || $accessToken === '') {
+                    throw new RuntimeException('Facebook returned no app access token.');
+                }
 
-            $accessTokenResponse = Json::decode((string)$accessTokenResponse->getBody());
-            $accessToken = $accessTokenResponse['access_token'] ?? null;
+                return $accessToken;
+            }, self::APP_ACCESS_TOKEN_CACHE_DURATION);
 
             $response = $client->get('https://graph.facebook.com', [
                 'query' => [
