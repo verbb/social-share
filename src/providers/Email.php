@@ -27,10 +27,12 @@ class Email extends Provider
 
     public function getShareUrl(string $url, ?string $text = null, array $params = []): ?string
     {
-        return UrlHelper::urlWithParams('mailto:', array_filter(array_merge([
+        $shareUrl = UrlHelper::urlWithParams('mailto:', array_filter(array_merge([
             'subject' => $text,
             'body' => $url,
         ], $params)));
+
+        return str_replace('+', '%20', $shareUrl);
     }
 
 }

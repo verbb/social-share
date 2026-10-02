@@ -27,11 +27,13 @@ class Sms extends Provider
 
     public function getShareUrl(string $url, ?string $text = null, array $params = []): ?string
     {
-        $string = implode('%20', array_filter([$text, $url]));
+        $string = implode(' ', array_filter([$text, $url]));
 
-        return UrlHelper::urlWithParams('sms:', array_filter(array_merge([
+        $shareUrl = UrlHelper::urlWithParams('sms:', array_filter(array_merge([
             'body' => $string,
         ], $params)));
+
+        return str_replace('+', '%20', $shareUrl);
     }
 
 }
