@@ -45,7 +45,7 @@ class Instagram extends OAuthProvider
     public function getOAuthProviderConfig(): array
     {
         $config = parent::getOAuthProviderConfig();
-        $config['graphApiVersion'] = 'v15.0';
+        $config['graphApiVersion'] = 'v26.0';
 
         return $config;
     }
@@ -75,6 +75,10 @@ class Instagram extends OAuthProvider
 
     public function getFollowersCount(string $account): ?int
     {
+        if (!$this->isConfigured() || !$this->isConnected()) {
+            return null;
+        }
+
         try {
             $count = null;
 

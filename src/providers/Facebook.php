@@ -121,6 +121,10 @@ class Facebook extends Provider
 
     public function getSharesCount(string $url): ?int
     {
+        if (!$this->isConfigured()) {
+            return null;
+        }
+
         try {
             $client = ProviderHttp::createClient();
 

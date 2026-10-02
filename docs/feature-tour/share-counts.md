@@ -5,12 +5,12 @@ Share counts are heavily cached to prevent slow page loading, and triggering API
 
 The following providers support fetching share counts:
 
-- Buffer
-- Facebook
-- Pinterest
-- Reddit
-- Tumblr
-- Yummly
+| Provider | Requirements |
+| - | - |
+| Buffer | No account configuration is required. |
+| Facebook | Configure the provider with your Facebook App ID and App Secret. |
+| Pinterest | No account configuration is required. |
+| Tumblr | No account configuration is required. |
 
 ## Getting Share Count Providers
 You can fetch all providers that support share counts. This will return a collection of [Provider](docs:developers/provider) objects.

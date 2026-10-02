@@ -75,6 +75,10 @@ class Twitter extends Provider
 
     public function getFollowersCount(string $account): ?int
     {
+        if (!$this->isConfigured()) {
+            return null;
+        }
+
         try {
             $client = ProviderHttp::createClient();
 

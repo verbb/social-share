@@ -17,7 +17,7 @@ class Reddit extends Provider
 
     public static function supportsSharesCount(): bool
     {
-        return true;
+        return false;
     }
 
     public static function supportsShareButton(): bool

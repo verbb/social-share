@@ -3,6 +3,7 @@
 ## Unreleased
 
 ### Fixed
+- Stopped unsupported Reddit, Spotify and Yummly count requests from triggering outbound calls.
 - Fixed the post-connect redirect for OAuth providers.
 - Fixed minimum share counts hiding freshly fetched counts.
 - Fixed moderate-severity resource consumption vulnerabilities.

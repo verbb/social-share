@@ -5,24 +5,25 @@ Follower counts are heavily cached to prevent slow page loading, and triggering 
 
 The following providers support fetching follower counts:
 
-- Dribbble
-- [Envato](docs:providers/envato)
-- Facebook
-- Feedly
-- GitHub
-- Instagram
-- [Mailchimp](docs:providers/mailchimp)
-- MixCloud
-- Pinterest
-- SoundCloud
-- Spotify
-- Steam
-- Vkontakte
-- X (Twitter)
-- YouTube Channel
-- YouTube User
+| Provider | Requirements |
+| - | - |
+| Dribbble | Configure and connect the provider under **Settings → Social Share → Providers**. |
+| [Envato](docs:providers/envato) | Configure a personal token. |
+| Facebook | No account configuration is required. |
+| Feedly | No account configuration is required. |
+| GitHub | No account configuration is required. |
+| Instagram | Configure and connect the provider under **Settings → Social Share → Providers**. |
+| [Mailchimp](docs:providers/mailchimp) | Configure an API key. |
+| MixCloud | No account configuration is required. |
+| Pinterest | No account configuration is required. |
+| SoundCloud | No account configuration is required. |
+| Steam | No account configuration is required. |
+| Vkontakte | No account configuration is required. |
+| X (Twitter) | Configure the provider with your API Key and API Secret. |
+| YouTube Channel | No account configuration is required. |
+| YouTube User | No account configuration is required. |
 
-Mailchimp and Envato require credentials from your own provider accounts. Configure these under **Settings → Social Share → Providers** before requesting their follower counts. Environment variables keep the credential value out of project config.
+Provider credentials are configured under **Settings → Social Share → Providers**. Environment variables keep credential values out of project config.
 
 ## Getting Follower Count Providers
 You can fetch all providers that support follower counts. This will return a collection of [Provider](docs:developers/provider) objects.

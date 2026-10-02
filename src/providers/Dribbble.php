@@ -56,6 +56,10 @@ class Dribbble extends OAuthProvider
 
     public function getFollowersCount(string $account): ?int
     {
+        if (!$this->isConfigured() || !$this->isConnected()) {
+            return null;
+        }
+
         try {
             $response = $this->request('GET', 'user');
 

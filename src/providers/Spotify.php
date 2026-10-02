@@ -16,7 +16,7 @@ class Spotify extends Provider
 
     public static function supportsFollowersCount(): bool
     {
-        return true;
+        return false;
     }
 
 
