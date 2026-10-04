@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.0.13 - 2026-10-05
 
 ### Added
 - Added a standalone Craft integration test harness and regression coverage for count, provider and share-button behavior.
