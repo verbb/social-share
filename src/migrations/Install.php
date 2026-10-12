@@ -2,7 +2,6 @@
 namespace verbb\socialshare\migrations;
 
 use craft\db\Migration;
-use craft\helpers\MigrationHelper;
 
 use verbb\auth\Auth;
 
