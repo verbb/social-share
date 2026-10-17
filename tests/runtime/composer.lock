@@ -10636,16 +10636,16 @@
         },
         {
             "name": "verbb/base",
-            "version": "3.0.19",
+            "version": "3.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/verbb/verbb-base.git",
-                "reference": "36addde3aee74adaa2b7c13ec0724f2d27b39ef5"
+                "reference": "0b60c166a79e2762aa968e062dc84ca6c0a9406e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verbb/verbb-base/zipball/36addde3aee74adaa2b7c13ec0724f2d27b39ef5",
-                "reference": "36addde3aee74adaa2b7c13ec0724f2d27b39ef5",
+                "url": "https://api.github.com/repos/verbb/verbb-base/zipball/0b60c166a79e2762aa968e062dc84ca6c0a9406e",
+                "reference": "0b60c166a79e2762aa968e062dc84ca6c0a9406e",
                 "shasum": ""
             },
             "require": {
@@ -10682,21 +10682,21 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-02T04:48:53+00:00"
+            "time": "2026-10-04T21:22:12+00:00"
         },
         {
             "name": "verbb/social-share",
-            "version": "2.0.12",
+            "version": "2.0.15",
             "dist": {
                 "type": "path",
                 "url": "../../..",
-                "reference": "c5c3e046df88033e88a04cc6328f692d72a0d804"
+                "reference": "f513ab75f51e5f5b96e4c5e9d556778101ac894d"
             },
             "require": {
                 "craftcms/cms": "^5.0.0",
                 "php": "^8.2",
                 "verbb/auth": "^2.0.48",
-                "verbb/base": "^3.0.19"
+                "verbb/base": "^3.0.20"
             },
             "require-dev": {
                 "pestphp/pest": "^3.8"

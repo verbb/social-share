@@ -36,3 +36,4 @@
 /.phpunit.result.cache
 
 /.ddev/docker-compose.tests-local.yaml
+/.ddev/config.zz-ci.yaml
