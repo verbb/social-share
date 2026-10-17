@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.0.16 - 2026-10-17
 
 ### Fixed
 - Fixed errors rendering Envato, Mailchimp and Twitter provider settings.
