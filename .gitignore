@@ -37,3 +37,5 @@
 
 /.ddev/docker-compose.tests-local.yaml
 /.ddev/config.zz-ci.yaml
+
+/.ddev/docker-compose.php-minimum.yaml
