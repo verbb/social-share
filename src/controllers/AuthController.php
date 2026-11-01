@@ -117,7 +117,7 @@ class AuthController extends Controller
             ));
 
             // Show a generic error in the CP
-            Craft::$app->getSession()->setFlash('social-share:callback-error', $error);
+            Session::setError('social-share', $error, true);
 
             return $this->redirect($origin);
         }
