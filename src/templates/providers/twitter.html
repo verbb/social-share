@@ -9,7 +9,7 @@
     required: true,
     suggestEnvVars: true,
     value: provider.clientId ?? '',
-    warning: macros.configWarning('clientId', 'social-share'),
+    warning: macros.configWarning("providers.#{provider.handle}.clientId", 'social-share'),
     errors: provider.getErrors('clientId'),
 }) }}
 
@@ -20,6 +20,6 @@
     required: true,
     suggestEnvVars: true,
     value: provider.clientSecret ?? '',
-    warning: macros.configWarning('clientSecret', 'social-share'),
+    warning: macros.configWarning("providers.#{provider.handle}.clientSecret", 'social-share'),
     errors: provider.getErrors('clientSecret'),
 }) }}

@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+- Fixed Facebook and Twitter provider settings not showing a warning when their Client ID or Client Secret is set in the `config/social-share.php` file.
+
 ## 2.0.17 - 2026-10-22
 
 ### Changed
