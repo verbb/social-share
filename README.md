@@ -14,11 +14,71 @@ Generate profile or share buttons for supported providers with their destination
 - Retrieve provider-supported follower or URL-share totals.
 - Register another service behind the same template-facing API.
 
+## Share Providers
+
+- Blogger
+- Bluesky
+- Buffer
+- Diaspora
+- Digg
+- Douban
+- Email
+- Evernote
+- Facebook
+- Flipboard
+- Gab
+- Gettr
+- Gmail
+- HackerNews
+- Instapaper
+- Iorbix
+- Kakao
+- Kik
+- KindleIt
+- Kooapp
+- Line
+- LinkedIn
+- LiveJournal
+- Mail.ru
+- Mastodon
+- Meneame
+- Messenger
+- MeWe
+- Mix
+- Odnoklassniki
+- Outlook.com
+- Parler
+- Pinterest
+- Pocket
+- Print
+- Qzone
+- Reddit
+- Refind
+- Renren
+- Skype
+- Sms
+- Surfingbird
+- Telegram
+- TencentQQ
+- Threema
+- Trello
+- Tumblr
+- Viber
+- Vkontakte
+- WhatsApp
+- Wordpress
+- X (Twitter)
+- Xing
+- Yammer
+- Yummly
+
 ## Documentation
+
 Visit the [Social Share Plugin page](https://verbb.io/craft-plugins/social-share) for all documentation, guides, pricing and developer resources.
 
 ## Support
-Get in touch with us via the [Social Share Support page](https://verbb.io/craft-plugins/social-share/support) or by [creating a Github issue](https://github.com/verbb/social-share/issues)
+
+Get in touch with us via the [Social Share Support page](https://verbb.io/craft-plugins/social-share/support) or by [creating a GitHub issue](https://github.com/verbb/social-share/issues).
 
 <h2></h2>
 

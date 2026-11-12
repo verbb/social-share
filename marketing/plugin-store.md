@@ -10,3 +10,61 @@ Generate profile or share buttons for supported providers with their destination
 - Start from familiar provider colours and customise the presentation as needed.
 - Retrieve provider-supported follower or URL-share totals.
 - Register another service behind the same template-facing API.
+
+## Share Providers
+
+- Blogger
+- Bluesky
+- Buffer
+- Diaspora
+- Digg
+- Douban
+- Email
+- Evernote
+- Facebook
+- Flipboard
+- Gab
+- Gettr
+- Gmail
+- HackerNews
+- Instapaper
+- Iorbix
+- Kakao
+- Kik
+- KindleIt
+- Kooapp
+- Line
+- LinkedIn
+- LiveJournal
+- Mail.ru
+- Mastodon
+- Meneame
+- Messenger
+- MeWe
+- Mix
+- Odnoklassniki
+- Outlook.com
+- Parler
+- Pinterest
+- Pocket
+- Print
+- Qzone
+- Reddit
+- Refind
+- Renren
+- Skype
+- Sms
+- Surfingbird
+- Telegram
+- TencentQQ
+- Threema
+- Trello
+- Tumblr
+- Viber
+- Vkontakte
+- WhatsApp
+- Wordpress
+- X (Twitter)
+- Xing
+- Yammer
+- Yummly
