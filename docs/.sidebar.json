@@ -44,17 +44,25 @@
         "title": "Developers",
         "collapsable": false,
         "children": [
-            "developers/custom-provider",
-            "developers/graphql"
+            "developers/events",
+            "developers/custom-providers"
+        ]
+    },
+    {
+        "title": "GraphQL",
+        "collapsable": false,
+        "children": [
+            "graphql/queries",
+            "graphql/interfaces-types"
         ]
     },
     {
         "title": "Reference",
         "collapsable": false,
         "children": [
-            "developers/provider",
-            "developers/share-button",
-            "developers/button"
+            "reference/provider",
+            "reference/share-button",
+            "reference/button"
         ]
     }
 ]

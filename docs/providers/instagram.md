@@ -10,4 +10,4 @@ Instagram follower counts come from an Instagram professional account connected 
 6. Save the provider and select **Connect**.
 7. Complete the authorisation using the Meta account that manages the linked Facebook Page.
 
-Social Share requests the connected account's Pages and uses the first Page with a linked Instagram business account. Calls to `craft.socialShare.getFollowers('instagram', account)` return that Instagram account's follower count. The required `account` argument is retained for compatibility and does not select another account.
+Social Share requests the connected account's Pages and uses the first Page with a linked Instagram business account. Calls to `craft.socialShare.getFollowers('instagram', account)` return that Instagram account's follower count. The `account` argument is required but doesn't select another account.

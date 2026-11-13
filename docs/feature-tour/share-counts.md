@@ -13,7 +13,7 @@ The following providers support fetching share counts:
 | Tumblr | No account configuration is required. |
 
 ## Getting Share Count Providers
-You can fetch all providers that support share counts. This will return a collection of [Provider](docs:developers/provider) objects.
+You can fetch all providers that support share counts. This will return a collection of [Provider](docs:reference/provider) objects.
 
 ```twig
 {% for provider in craft.socialShare.getSharesCountProviders() %}

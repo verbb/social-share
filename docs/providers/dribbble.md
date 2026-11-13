@@ -9,4 +9,4 @@ Dribbble follower counts come from the Dribbble account connected to Social Shar
 5. Save the provider and select **Connect**.
 6. Complete the authorisation using the Dribbble account whose follower count the site should display.
 
-Calls to `craft.socialShare.getFollowers('dribbble', account)` return the connected account's follower count. The required `account` argument is retained for compatibility and does not select a different Dribbble account.
+Calls to `craft.socialShare.getFollowers('dribbble', account)` return the connected account's follower count. The `account` argument is required but doesn't select a different Dribbble account.

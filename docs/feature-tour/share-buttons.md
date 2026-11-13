@@ -64,7 +64,7 @@ Looking for buttons to link off to a URL? Check out [Buttons](docs:feature-tour/
 :::
 
 ## Getting Share Button Providers
-You can fetch all providers that support share buttons. This will return a collection of [Provider](docs:developers/provider) objects.
+You can fetch all providers that support share buttons. This will return a collection of [Provider](docs:reference/provider) objects.
 
 ```twig
 {% for provider in craft.socialShare.getShareButtonProviders() %}

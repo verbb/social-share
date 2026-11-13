@@ -25,7 +25,7 @@ The following providers support fetching follower counts:
 Provider credentials are configured under **Settings → Social Share → Providers**. Environment variables keep credential values out of project config.
 
 ## Getting Follower Count Providers
-You can fetch all providers that support follower counts. This will return a collection of [Provider](docs:developers/provider) objects.
+You can fetch all providers that support follower counts. This will return a collection of [Provider](docs:reference/provider) objects.
 
 ```twig
 {% for provider in craft.socialShare.getFollowersCountProviders() %}
@@ -44,11 +44,11 @@ This should return the total number of followers for `craftcms` (e.g. `2K`).
 
 As each platform is different, use the guide below for the value passed as the second parameter:
 
-- Facebook — page ID or username, such as `craftcms`.
-- Pinterest — username, such as `craftcms`.
-- YouTube — handle, such as `@craftcms`, or channel ID, such as `UC45X_OuS3I2Kq7ILkS5A1uw`.
+- Facebook: page ID or username, such as `craftcms`.
+- Pinterest: username, such as `craftcms`.
+- YouTube: handle, such as `@craftcms`, or channel ID, such as `UC45X_OuS3I2Kq7ILkS5A1uw`.
 
-Dribbble and Instagram return the follower count for the connected account. Their `account` argument is still required for call compatibility, but its value does not select another account.
+Dribbble and Instagram return the follower count for the connected account. Their `account` argument is required, but its value doesn't select another account.
 
 ### Render Options
 You can pass in a number of options to control output.
