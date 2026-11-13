@@ -12,7 +12,7 @@ return [
 ];
 ```
 
-All other settings keep their defaults. Add any further settings you want to change to the same array. The options below explain the available settings and their defaults.
+All other settings keep their defaults. Add any further settings you want to change to the same array. The options below explain the available settings and their defaults. You can also manage many of these settings in the control panel under **Settings → Social Share**.
 
 ## Configuration Options
 
@@ -145,7 +145,6 @@ A collection of HTML attributes to be added to the button's wrapper HTML element
 
 A collection of settings for a provider.
 :::
-
 
 ## Provider Settings
 You can set provider settings by adding the `handle` of a provider, and passing in any setting specific to that provider.

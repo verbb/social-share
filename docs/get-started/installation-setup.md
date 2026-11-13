@@ -2,7 +2,7 @@
 You can install Social Share via the plugin store, or through Composer.
 
 ## Craft Plugin Store
-To install **Social Share**, navigate to the _Plugin Store_ section of your Craft control panel, search for `Social Share`, and click the _Try_ button.
+To install **Social Share**, navigate to the _Plugin Store_ section of your Craft control panel, search for `Social Share`, and click the _Install_ button.
 
 ## Composer
 You can also add the package to your project using Composer and the command line.
